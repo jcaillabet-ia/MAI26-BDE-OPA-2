@@ -58,5 +58,20 @@ services:
       db:
         condition: service_healthy
 
+  cassandra:
+    image: cassandra:4
+    container_name: projet_test_cassandra
+    restart: always
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+    healthcheck:
+      test: ["CMD-SHELL", "nodetool status | grep -q 'UN'"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
 volumes:
   postgres_data:
+  cassandra_data:
