@@ -80,11 +80,7 @@ def main():
                         query = "".join(query_parts)
                         cursor.execute(query, all_params)
 
-                # Pause systématique pour respecter le rate limiting global (max 30 requêtes par minute)
-                time.sleep(2)
-
-                # TODO faire en sorte que la recuperation soit rapide pour les 250 monnaies
-                break
+                print(crypto_id)   
 
         conn.commit()
     except Exception as e:
