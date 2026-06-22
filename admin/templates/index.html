@@ -20,7 +20,7 @@
                         <th class="text-white">Capitalisation (Market Cap)</th>
                         <th>Activé</th>
                         <th>Activer</th>
-                        <th>Tickers</th>
+                        <th>Ticker</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,21 +32,18 @@
                         <td>{{ coin.market_cap }}</td>
                         <td>{{ "Oui" if coin.enabled else "Non" }}</td>
                         <td>
+                            {% if coin.ticker %}
                             <div @click="enableCoin('{{ coin.id }}')"
                                 class="rounded-md px-6 h-10 hover:bg-amber-400 bg-amber-500 text-black cursor-pointer flex items-center justify-center">
                                 Activer</div>
+                            {% endif %}
                         </td>
                         <td>
-                            {% for ticker in coin.tickers %}
-                            {% if ticker.name == "Binance" %}
-                            <span class="bg-green-500 text-heading text-xs font-medium px-1.5 py-0.5 rounded">{{
-                                ticker.name }}</span>
-                            {% else %}
+                            {% if coin.ticker %}
                             <span
-                                class="bg-neutral-primary-soft text-heading text-xs font-medium px-1.5 py-0.5 rounded">{{
-                                ticker.name }}</span>
+                                class="ml-2 bg-green-500 text-gray-900 text-heading text-xs font-medium px-1.5 py-0.5 rounded">{{
+                                coin.ticker }}</span>
                             {% endif %}
-                            {% endfor %}
                         </td>
                     </tr>
                     {% endfor %}
