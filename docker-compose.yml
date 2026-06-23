@@ -32,14 +32,14 @@ services:
       db:
         condition: service_healthy
 
-  airflow:
+  api:
     build:
-      context: ./airflow
+      context: ./api
       dockerfile: Dockerfile
-    container_name: airflow
+    container_name: api
     restart: always
     volumes:
-      - ./airflow:/app
+      - ./api:/app
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
     depends_on:
@@ -52,7 +52,7 @@ services:
     container_name: projet_test_adminer
     restart: always
     ports:
-      - "8080:8080"
+      - "8081:8080"
     depends_on:
       db:
         condition: service_healthy
@@ -70,6 +70,21 @@ services:
       interval: 15s
       timeout: 5s
       retries: 10
+  airflow:
+    build:
+      context: ./airflow
+      dockerfile: Dockerfile
+    container_name: airflow
+    restart: always
+    volumes:
+      - ./airflow:/app
+    environment:
+      - AIRFLOW__CORE__AUTH_MANAGER=airflow.api_fastapi.auth.managers.simple.simple_auth_manager.SimpleAuthManager
+      - AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_USERS=admin:admin
+
+    ports:
+      - "8081:8080"
+    command: airflow standalone
 
 volumes:
   postgres_data:
