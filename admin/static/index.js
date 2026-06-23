@@ -1,3 +1,5 @@
+const apiUrl = 'http://localhost:8000';
+
 document.addEventListener('alpine:init', () => {
     Alpine.data('pageIndex', () => ({
         // messages: [],
@@ -15,13 +17,12 @@ document.addEventListener('alpine:init', () => {
         },
 
         enableCoin(id) {
-            console.log(id);
             // this.ws.send('Hello !');
-            fetch(`/coin/${id}/enable`, {
+            fetch(`${apiUrl}/coin/${id}/enable`, {
                 method: 'PATCH',
             })
                 .then(res => res.json())
-                .then(data => this.messages = data);
+                .then(data => console.log(data));
         }
     }));
 });

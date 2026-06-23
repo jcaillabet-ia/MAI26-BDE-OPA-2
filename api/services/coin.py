@@ -10,17 +10,6 @@ def list_coins() -> list[Coin]:
         rows = session.exec(statement).all()
         coins = [dict(row) for row in rows]
 
-        # SELECT DISTINCT ct.coin_id, t.name
-        # FROM coin_ticker ct
-        # INNER JOIN ticker t on t.id = ct.ticker_id
-        # ORDER BY ct.coin_id
-
-        # SELECT DISTINCT count(ct.coin_id) as count, t.name
-        # FROM coin_ticker ct
-        # INNER JOIN ticker t on t.id = ct.ticker_id
-        # GROUP BY t.name
-        # ORDER BY count DESC
-
         statement = (
             select(
                 Ticker.name
@@ -36,14 +25,9 @@ def list_coins() -> list[Coin]:
             row = list(filter(lambda row: row.id == coin['id'], rows))
             coin_tickers = list(map(lambda row: row.name, row[0].tickers))
 
-            # print(coin_tickers)
-            # if(coin['id'] == 'bitcoin'):
-            #     print(coin_tickers)
-
             for ticker in tickers:
                 if ticker in coin_tickers:
                     coin['ticker'] = ticker
                     break
-
 
         return coins
