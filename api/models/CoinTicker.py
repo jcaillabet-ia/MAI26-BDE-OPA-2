@@ -1,6 +1,8 @@
-from sqlmodel import SQLModel, Field
+from sqlmodel import Field
 
-class CoinTicker(SQLModel, table=True):
+from .Model import Model
+
+class CoinTicker(Model, table=True):
     __tablename__ = "coin_ticker"
 
     coin_id: str = Field(foreign_key="coin.id", primary_key=True)

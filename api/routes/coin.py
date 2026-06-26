@@ -1,7 +1,7 @@
 import os
 from fastapi import APIRouter, Request
 
-from services.coin import list_coins
+from services.coin import list_coins, enable_coin
 
 router = APIRouter()
 
@@ -16,6 +16,6 @@ def list(request: Request):
 
 @router.patch("/{id}/enable")
 def enable(id: str):
-    print("test")
-    return {"message": "ok"}
+    coin = enable_coin(id)
+    return coin
     

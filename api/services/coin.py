@@ -31,3 +31,11 @@ def list_coins() -> list[Coin]:
                     break
 
         return coins
+
+def enable_coin(coin_id: str) -> Coin:
+    with Session(engine) as session:
+        statement = select(Coin).where(Coin.id == coin_id)
+        coin = session.exec(statement).first()
+        coin.enabled = True
+        coin.save(session)
+        return coin

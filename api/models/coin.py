@@ -1,11 +1,10 @@
-from typing import List, TYPE_CHECKING
-from sqlmodel import SQLModel, Field, Relationship
-from .coin_ticker import CoinTicker
+from typing import List
+from sqlmodel import Field, Relationship
+from .CoinTicker import CoinTicker
 
-if TYPE_CHECKING:
-    from .ticker import Ticker
+from .Model import Model
 
-class Coin(SQLModel, table=True):
+class Coin(Model, table=True):
     __tablename__ = "coin"
 
     id: str = Field(primary_key=True)
