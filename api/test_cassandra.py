@@ -10,10 +10,12 @@ from sklearn.tree import DecisionTreeRegressor
 import time
 
 def main():
+    print("start")
+
     CLUSTER_IPS = ['cassandra.mai26-bde-opa-2.orb.local'] 
-    
+
     cluster = Cluster(CLUSTER_IPS)
-    
+
     try:
         session = cluster.connect()
         session.set_keyspace('crypto_bot')
