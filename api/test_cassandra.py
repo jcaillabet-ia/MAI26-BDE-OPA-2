@@ -28,8 +28,8 @@ def main():
 
         # Configuration
         symbol = 'BTC/USDT'
-        limit = 1000
-        candles = fetch_coin(symbol)
+        limit = 40000
+        candles = fetch_coin(symbol, limit)
 
         bucket_date = save_candles_cassandra(session, symbol, candles)
         rows = load_candles_cassandra(session, symbol, bucket_date, limit)
