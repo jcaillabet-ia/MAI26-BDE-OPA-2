@@ -28,7 +28,7 @@ def main():
 
         # Configuration
         symbol = 'BTC/USDT'
-        limit = 40000
+        limit = 50000
         candles = fetch_coin(symbol, limit)
 
         bucket_date = save_candles_cassandra(session, symbol, candles)
@@ -41,6 +41,10 @@ def main():
         save_candles_postgres(conn, symbol, candles)
         load_candles_postgres(conn, symbol, bucket_date, limit)
         conn.close()
+
+
+
+        
 
         df = pd.DataFrame(rows)
         for col in ['open', 'high', 'low', 'close', 'volume']:

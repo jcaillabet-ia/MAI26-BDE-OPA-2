@@ -60,6 +60,9 @@ services:
     image: cassandra:4
     container_name: projet_test_cassandra
     restart: always
+    environment:
+      - MAX_HEAP_SIZE=1G
+      - HEAP_NEWSIZE=256M
     ports:
       - "9042:9042"
     volumes:

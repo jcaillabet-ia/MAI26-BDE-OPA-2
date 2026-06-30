@@ -2,6 +2,7 @@ import os
 from datetime import datetime
 import time
 import psycopg2
+from cassandra.concurrent import execute_concurrent_with_args
 
 # ==========================================
 # Cassandra Management Functions
@@ -33,23 +34,23 @@ def create_cassandra_schema(session, keyspace_name = "crypto_bot"):
 def save_candles_cassandra(session, symbol, candles):    
     query = """
         INSERT INTO candles (crypto_id, bucket_date, timestamp, open, high, low, close, volume)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """
+    prepared = session.prepare(query)
+    
     start = time.time()
     dt_objet = datetime.fromtimestamp(candles[0][0] / 1000)
-    timestamp_cassandra = dt_objet
     date = dt_objet.date()
-    for candle in candles:
-        session.execute(query, (
-            symbol,
-            date,
-            candle[0],
-            candle[1],
-            candle[2],
-            candle[3],
-            candle[4],
-            candle[5]
-        ))
+    
+    # Prepare arguments for concurrent execution
+    args_list = [
+        (symbol, date, candle[0], candle[1], candle[2], candle[3], candle[4], candle[5])
+        for candle in candles
+    ]
+    
+    # Execute 100 statements concurrently
+    execute_concurrent_with_args(session, prepared, args_list, concurrency=100)
+    
     end = time.time()
     print("Cassandra save : " + str(end - start))
     return date
