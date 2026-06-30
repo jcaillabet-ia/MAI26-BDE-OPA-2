@@ -84,6 +84,17 @@ def create_postgres_schema(conn, schema_name):
         cursor.execute(query)
     conn.commit()
 
+#def import_postgres_schema(conn)
+    # conn = db.open_connection()
+    # cursor = conn.cursor()
+
+    # schema_path = os.path.join(os.path.dirname(__file__), "schema.sql")
+    # with open(schema_path, "r") as schema_file:
+    #     schema_sql = schema_file.read()
+
+    # cursor.execute(schema_sql)
+    # conn.commit()
+
 def create_postgres_table(conn, schema_name = "crypto_bot"):
     query = f"""
         CREATE TABLE IF NOT EXISTS {schema_name}.candles (
