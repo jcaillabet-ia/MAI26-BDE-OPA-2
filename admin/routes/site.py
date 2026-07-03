@@ -4,7 +4,7 @@ from fastapi.templating import Jinja2Templates
 
 import requests
 
-apiUrl = 'http://mai26-bde-opa-2-api-1:8000'
+apiUrl = 'http://api:8000'
 
 router = APIRouter()
 

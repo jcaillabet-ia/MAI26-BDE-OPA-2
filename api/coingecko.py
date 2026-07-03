@@ -86,7 +86,10 @@ def build_dict(length=250):
             for market in exchange['markets']:
                 if coin_market.symbol.upper() in market['base']:
                     coins.append({
+                        'id': coin_market.id,
+                        'name': coin_market.name,
                         'symbol': market['base'] + '/' + market['quote'],
+                        'market_cap': coin_market.market_cap,
                         'exchange': exchange['name']
                     })
                     _break = True

@@ -16,8 +16,15 @@ document.addEventListener('alpine:init', () => {
             // };
         },
 
+        disableCoin(id) {
+            fetch(`${apiUrl}/coin/${id}/disable`, {
+                method: 'PATCH',
+            })
+                .then(res => res.json())
+                .then(data => console.log(data));
+        },
+
         enableCoin(id) {
-            // this.ws.send('Hello !');
             fetch(`${apiUrl}/coin/${id}/enable`, {
                 method: 'PATCH',
             })

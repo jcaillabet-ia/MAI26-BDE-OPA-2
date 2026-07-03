@@ -3,34 +3,12 @@ from sqlalchemy.sql import func, desc
 
 from .database import engine
 from models.Coin import Coin
-from models.CoinTicker import CoinTicker
-from models.Ticker import Ticker
 
 def list_coins() -> list[Coin]:
     with Session(engine) as session:
         statement = select(Coin).order_by(Coin.market_cap.desc()).limit(250)
         rows = session.exec(statement).all()
         coins = [dict(row) for row in rows]
-
-        statement = (
-            select(
-                Ticker.name
-            )
-            .join(CoinTicker, Ticker.id == CoinTicker.ticker_id)
-            .group_by(Ticker.name)
-            .order_by(desc(func.count(CoinTicker.coin_id)))
-        )
-
-        tickers = session.exec(statement).all()
-
-        for coin in coins:
-            row = list(filter(lambda row: row.id == coin['id'], rows))
-            coin_tickers = list(map(lambda row: row.name, row[0].tickers))
-
-            for ticker in tickers:
-                if ticker in coin_tickers:
-                    coin['ticker'] = ticker
-                    break
 
         return coins
 

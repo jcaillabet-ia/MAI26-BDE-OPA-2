@@ -15,6 +15,10 @@ def enable():
             item['ticker'] = coin['ticker']
         result.append(item)
     return result
+
+@router.get("/")
+def list():
+    return list_coins()
     
 
 @router.patch("/{id}/enable")

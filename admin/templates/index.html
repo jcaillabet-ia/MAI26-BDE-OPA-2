@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Liste des Coins</title>
+    <script defer src="/static/index.js"></script>
+
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -25,7 +27,7 @@
                 </thead>
                 <tbody>
                     {% for coin in coins %}
-                    <tr class="h-12">
+                    <tr class="h-12" x-data="{ isEnabled: {{ 'true' if coin.enabled else 'false' }} }">
                         <td>{{ coin.id }}</td>
                         <td>{{ coin.symbol }}</td>
                         <td>{{ coin.name }}</td>
@@ -33,9 +35,19 @@
                         <td>{{ "Oui" if coin.enabled else "Non" }}</td>
                         <td>
                             {% if coin.ticker %}
-                            <div @click="enableCoin('{{ coin.id }}')"
-                                class="rounded-md px-6 h-10 hover:bg-amber-400 bg-amber-500 text-black cursor-pointer flex items-center justify-center">
-                                Activer</div>
+                            <!-- Bouton Activer : visible si pas activé -->
+                            <div x-show="!isEnabled" @click="enableCoin('{{ coin.id }}')"
+                                class="rounded-md px-6 h-10 hover:bg-amber-400 bg-amber-500 text-black cursor-pointer flex items-center justify-center"
+                                x-cloak>
+                                Activer
+                            </div>
+
+                            <!-- Bouton Désactiver : visible si activé -->
+                            <div x-show="isEnabled" @click="disableCoin('{{ coin.id }}')"
+                                class="rounded-md px-6 h-10 hover:bg-amber-400 bg-amber-500 text-black cursor-pointer flex items-center justify-center"
+                                x-cloak>
+                                Désactiver
+                            </div>
                             {% endif %}
                         </td>
                         <td>
@@ -52,7 +64,5 @@
         </div>
     </div>
 </body>
-
-<script src="/static/index.js"></script>
 
 </html>
