@@ -33,7 +33,7 @@ def create_cassandra_schema(session, keyspace_name = "crypto_bot"):
 
 def save_candles_cassandra(session, symbol, candles):    
     query = """
-        INSERT INTO candles (crypto_id, bucket_date, timestamp, open, high, low, close, volume)
+        INSERT INTO crypto_bot.candles (crypto_id, bucket_date, timestamp, open, high, low, close, volume)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """
     prepared = session.prepare(query)
@@ -50,7 +50,7 @@ def save_candles_cassandra(session, symbol, candles):
     
     # Execute 100 statements concurrently
     execute_concurrent_with_args(session, prepared, args_list, concurrency=100)
-    
+
     end = time.time()
     print("Cassandra save : " + str(end - start))
     return date
@@ -58,7 +58,7 @@ def save_candles_cassandra(session, symbol, candles):
 def load_candles_cassandra(session, symbol, bucket_date, limit):   
     query = """
         SELECT timestamp, open, high, low, close, volume 
-        FROM candles 
+        FROM crypto_bot.candles 
         WHERE crypto_id = %s AND bucket_date = %s 
         LIMIT %s
     """

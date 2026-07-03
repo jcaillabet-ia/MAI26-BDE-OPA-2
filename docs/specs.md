@@ -17,6 +17,20 @@ Deux base de données seront utilisées :
 - PostgreSQL pour le paramétrage
 - Cassandra pour les prix des crypto-monnaies
 
+## PostgreSQL
+
+Utilisé pour les taches de 'paramétrage' : 
+-  Activation ou désactivation d'une scrypto-monnaie à récupérer.
+
+## Cassandra
+
+- Keyspace : crypto_bot
+- Clé de partition : crypto_id/symbol, bucket_date ( une journée)
+- Clé de clustering : timestamp
+- Taille d'une partition : id(8) + bucket_date(10) + timestamp(8) + OHLCV(5 * 8) = 66 octets
+- Nombre de ligne par partition : 24 * 60 = 1440 ( 86400 si on passe par la seconde d'après )
+- Taille d'une partition : 66 * 1440 = 95040 octets = 0.09 Mo  ( 5.7 Mo si on passe à des pas à la seconde ) 
+
 # 3: Consommation de la donnée
 
 Les modèles de prédiction seront entrainés à partir d'un minimum de 50000 points.

@@ -7,12 +7,12 @@ load_dotenv(override=True)
 base_url = "https://api.coingecko.com/api/v3"
 COINGECKO_API_KEY = os.environ.get("COINGECKO_API_KEY")
 
-def get_exchange(symbol):
-    if symbol in ["BTC/USDT"]:
-        return ccxt.binance()
+def get_exchange(dict, symbol):
+    exchange_name = list(filter(lambda x: x['symbol'] == symbol, dict))[0]['exchange']
+    return getattr(ccxt, exchange_name)()
 
-def fetch_coin(symbol = 'BTC/USDT', limit = 1000):
-    exchange = get_exchange(symbol)
+def fetch_coin(dict, symbol = 'BTC/USDT', limit = 1000):
+    exchange = get_exchange(dict, symbol)
     timeframe = '1m'
     timeframe_ms = 60 * 1000
 

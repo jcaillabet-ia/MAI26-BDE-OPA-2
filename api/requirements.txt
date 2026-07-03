@@ -2,7 +2,9 @@ fastapi>=0.100.0
 uvicorn>=0.22.0
 cassandra-driver
 ccxt
+coingecko-sdk
 httpx
+matplotlib
 pandas
 sqlmodel>=0.0.19
 psycopg2-binary>=2.9.6

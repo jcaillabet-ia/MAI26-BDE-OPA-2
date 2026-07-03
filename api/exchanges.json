@@ -1,0 +1,886 @@
+[
+    {
+        "symbol": "BTC/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ETH/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USDT/TRY",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BNB/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USDC/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "XRP/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USDSOLD/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "TRX/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "HYPER/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "DOGE/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BRAINLET/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "USDSOLD/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "LEO/EUR",
+        "exchange": "okx"
+    },
+    {
+        "symbol": "ZEC/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "XLM/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "WBTC/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ADA/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "XMR/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "LINK/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BCC/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "DAI/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USD1/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "GRAM/FDUSD",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BCHABC/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USDE/USDC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "LTC/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "HBAR/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USDG/SGD",
+        "exchange": "okx"
+    },
+    {
+        "symbol": "SUI/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "AVAX/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "PYUSD/USDT",
+        "exchange": "okx"
+    },
+    {
+        "symbol": "CROSS/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "XAUT/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "NEAR/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "SHIB/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "TSLAB/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "QTUM/ETH",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BUIDL/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "USDY/USDT",
+        "exchange": "bybit"
+    },
+    {
+        "symbol": "TAO/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "UNI/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "PAXG/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "WLFI/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ASTER/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "OKB/EUR",
+        "exchange": "okx"
+    },
+    {
+        "symbol": "RLUSD/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ONDO/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "HTX/USDT",
+        "exchange": "bybit"
+    },
+    {
+        "symbol": "WLD/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "MNTC/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "DOT/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USDF/USD",
+        "exchange": "bitfinex"
+    },
+    {
+        "symbol": "SKYCOIN/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USDD/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "BFUSD/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "AAVE/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "MORPHO/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "PIVX/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ICP/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BGBP/USDC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ETC/ETH",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "DEXE/ETH",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "PEPE/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "QTUM/ETH",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "QNT/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "KCS/USDT",
+        "exchange": "bybit"
+    },
+    {
+        "symbol": "USDGO/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "BEAT/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "STABLE/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USTBL/USDT",
+        "exchange": "xt"
+    },
+    {
+        "symbol": "KAS/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "RENDER/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ATOM/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "JUP/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ALGO/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "POLY/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "NEXO/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "JST/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ADION/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "USDTB/USDT",
+        "exchange": "bybit"
+    },
+    {
+        "symbol": "ENA/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "GTO/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "币安人生/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BDXN/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "RJAAA/USDT",
+        "exchange": "bitget"
+    },
+    {
+        "symbol": "VVV/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "PUMP/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "FIL/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "GHOST/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "FLR/EUR",
+        "exchange": "okx"
+    },
+    {
+        "symbol": "XDC/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "NMSUSD02/BRL",
+        "exchange": "mercado"
+    },
+    {
+        "symbol": "NIGHT/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "HASH/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "APT/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "LIT/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "EUSX/USDC",
+        "exchange": "bullish"
+    },
+    {
+        "symbol": "ARB/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "TUSD/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "AERO/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "INJ/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "DASH/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "EURC/USD",
+        "exchange": "okx"
+    },
+    {
+        "symbol": "CAKE/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "FET/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "TRUMP/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "PENGU/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "VET/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "PRIME/USDT",
+        "exchange": "bybit"
+    },
+    {
+        "symbol": "BONK/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "JTO/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "VIRTUAL/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "SPX/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "TIA/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "FDUSD/BUSD",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "LUNC/BUSD",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "SEI/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "NCSKAUR2USD/USDT",
+        "exchange": "bingx"
+    },
+    {
+        "symbol": "APXUSD/USD",
+        "exchange": "kraken"
+    },
+    {
+        "symbol": "SUN/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "GRASS/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "CRV/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ETHFI/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "STX/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "PYTH/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BSV/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "GNO/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "KITE/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BTT/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "NFT/USD",
+        "exchange": "okx"
+    },
+    {
+        "symbol": "GWEI/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "XPL/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "PENDLE/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "OHM/USDT",
+        "exchange": "bingx"
+    },
+    {
+        "symbol": "BNB/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "XTZ/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "MON/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "KAG/USDT",
+        "exchange": "bitmart"
+    },
+    {
+        "symbol": "FRAX/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "SUB/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "CFX/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "A2Z/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USDM/USDT",
+        "exchange": "bitmart"
+    },
+    {
+        "symbol": "TELLR/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "ZBCN/EUR",
+        "exchange": "okx"
+    },
+    {
+        "symbol": "JASMY/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "FILDOWN/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ZRO/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "PEOPLE/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "FLOKI/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ZREAL/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "KAIA/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "APEPE/USDT",
+        "exchange": "bingx"
+    },
+    {
+        "symbol": "STRK/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "GRT/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "DCR/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "RAY/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "PIEVERSE/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "CHZ/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "COCOS/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "VELVET/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USAT/USD",
+        "exchange": "okx"
+    },
+    {
+        "symbol": "AKT/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "SYRUP/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "AXS/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "FF/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "IOTA/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ULTIMA/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "ENS/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "AUSD/USDT",
+        "exchange": "bingx"
+    },
+    {
+        "symbol": "BLOWFISH/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "WIF/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "USTBL/USDT",
+        "exchange": "xt"
+    },
+    {
+        "symbol": "FARTCOIN/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "NEXO/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "TAC/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BORG/USDT",
+        "exchange": "htx"
+    },
+    {
+        "symbol": "COMP/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "EIGEN/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BGBP/USDC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "STMX/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "XCN/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "TWT/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "GUSDT/USDT",
+        "exchange": "lbank"
+    },
+    {
+        "symbol": "ICX/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "APE/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "EURCV/USDC",
+        "exchange": "bullish"
+    },
+    {
+        "symbol": "BTW/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ZANO/USDT",
+        "exchange": "bitmart"
+    },
+    {
+        "symbol": "KAITO/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "THETA/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ETH/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "NEO/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "RUNE/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "MANA/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "SAND/BNB",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ARK/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "WEMIX/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "GENIUS/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "RIF/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "BOZO_OLD/USDT",
+        "exchange": "bingx"
+    },
+    {
+        "symbol": "VSN/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "BAT/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "NCASH/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "TRAC/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "GRAIL/USDT",
+        "exchange": "weex"
+    },
+    {
+        "symbol": "BMX/USDT",
+        "exchange": "bitmart"
+    },
+    {
+        "symbol": "BCC/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "MFT/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "THBILL/USDC",
+        "exchange": "hyperliquid"
+    },
+    {
+        "symbol": "GALA/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "SYN/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "SLX/USDT",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "ACREDIT03/BRL",
+        "exchange": "mercado"
+    },
+    {
+        "symbol": "SHFL/USDT",
+        "exchange": "xt"
+    },
+    {
+        "symbol": "USDF/USD",
+        "exchange": "bitfinex"
+    },
+    {
+        "symbol": "DATA/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "DRV/EUR",
+        "exchange": "kraken"
+    },
+    {
+        "symbol": "SFP/BTC",
+        "exchange": "binance"
+    },
+    {
+        "symbol": "GOMINING/USDT",
+        "exchange": "bingx"
+    },
+    {
+        "symbol": "MAGMA/USDT",
+        "exchange": "binance"
+    }
+]

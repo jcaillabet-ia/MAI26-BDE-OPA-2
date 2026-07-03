@@ -4,6 +4,8 @@ import ccxt
 import pandas as pd
 import numpy as np
 
+from coin import fetch_coin
+
 from cassandra.cluster import Cluster
 
 from sklearn.model_selection import train_test_split
@@ -21,7 +23,10 @@ def main():
 
     # Récupération de l'historique
     start = time.time()
-    candles = exchange.fetch_ohlcv(symbol, timeframe, limit=limit)
+    # candles = exchange.fetch_ohlcv(symbol, timeframe, limit=limit)
+    symbol = 'BTC/USDT'
+    limit = 2000 # 50000
+    candles = fetch_coin(symbol, limit)
     end = time.time()
 
     # print("Temps de récolte : " + str(end - start))
@@ -84,13 +89,14 @@ def main():
 
     # X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.2, random_state=42)
 
-    model = RandomForestRegressor(n_estimators=150, max_depth=5, random_state=42) #DecisionTreeRegressor
+    # model = RandomForestRegressor(n_estimators=150, max_depth=5, random_state=42) #DecisionTreeRegressor
+    model = DecisionTreeRegressor(random_state=42, max_depth=5)
     model.fit(X_train, y_train)
 
     y_pred_test = model.predict(X_test)
 
     print("score train : " , model.score(X_train, y_train))
-    print("score test : ", model.score(X_test,y_test))
+    print("score test : ", model.score(X_test, y_test))
 
 if __name__ == "__main__":
     main()
