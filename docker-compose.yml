@@ -1,0 +1,23 @@
+services:
+  ingestion:
+    build: .
+    image: cryptobot-ingestion
+    user: "${UID:-1000}:${GID:-1000}"
+    environment:
+      PYTHONPATH: /app/src
+    volumes:
+      - ./data/samples:/app/data/samples
+    command:
+      [
+        "python",
+        "-m",
+        "cryptobot.ingestion.fetch_ohlcv",
+        "--asset",
+        "BTC",
+        "--timeframe",
+        "1h",
+        "--n-points",
+        "100",
+        "--output",
+        "data/samples/btc_ohlcv_sample.json"
+      ]
