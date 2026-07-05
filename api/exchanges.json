@@ -3,1547 +3,1554 @@
         "id": "bitcoin",
         "name": "Bitcoin",
         "symbol": "BTC/USDT",
-        "market_cap": 1082494405403.0,
+        "market_cap": 1100062497340.0,
         "exchange": "binance"
     },
     {
         "id": "ethereum",
         "name": "Ethereum",
         "symbol": "ETH/BTC",
-        "market_cap": 183424349296.0,
+        "market_cap": 187233613256.0,
         "exchange": "binance"
     },
     {
         "id": "tether",
         "name": "Tether",
         "symbol": "USDT/TRY",
-        "market_cap": 160822225775.0,
+        "market_cap": 160989134480.0,
         "exchange": "binance"
     },
     {
         "id": "binancecoin",
         "name": "BNB",
         "symbol": "BNB/BTC",
-        "market_cap": 66384054654.0,
+        "market_cap": 69129297211.0,
         "exchange": "binance"
     },
     {
         "id": "usd-coin",
         "name": "USDC",
         "symbol": "USDC/BNB",
-        "market_cap": 63890838066.0,
+        "market_cap": 63761047662.0,
         "exchange": "binance"
     },
     {
         "id": "ripple",
         "name": "XRP",
         "symbol": "XRP/BTC",
-        "market_cap": 60006391808.0,
+        "market_cap": 61792618522.0,
         "exchange": "binance"
     },
     {
         "id": "solana",
         "name": "Solana",
         "symbol": "USDSOLD/USDT",
-        "market_cap": 41206499117.0,
+        "market_cap": 41261470947.0,
         "exchange": "binance"
     },
     {
         "id": "tron",
         "name": "TRON",
         "symbol": "TRX/BTC",
-        "market_cap": 26504114215.0,
+        "market_cap": 27280035722.0,
         "exchange": "binance"
     },
     {
         "id": "hyperliquid",
         "name": "Hyperliquid",
         "symbol": "HYPER/USDT",
-        "market_cap": 13358480302.0,
+        "market_cap": 13507642636.0,
         "exchange": "binance"
     },
     {
         "id": "dogecoin",
         "name": "Dogecoin",
         "symbol": "DOGE/BNB",
-        "market_cap": 10165269771.0,
+        "market_cap": 10408418392.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "usds",
+        "name": "USDS",
+        "symbol": "USDSOLD/USDT",
+        "market_cap": 8863226672.0,
         "exchange": "binance"
     },
     {
         "id": "rain",
         "name": "Rain",
         "symbol": "BRAINLET/USDT",
-        "market_cap": 9005012668.0,
+        "market_cap": 8852457341.0,
         "exchange": "weex"
-    },
-    {
-        "id": "usds",
-        "name": "USDS",
-        "symbol": "USDSOLD/USDT",
-        "market_cap": 8838368726.0,
-        "exchange": "binance"
     },
     {
         "id": "leo-token",
         "name": "LEO Token",
         "symbol": "LEO/EUR",
-        "market_cap": 7336725037.0,
+        "market_cap": 7415049365.0,
         "exchange": "okx"
     },
     {
         "id": "zcash",
         "name": "Zcash",
         "symbol": "ZEC/BTC",
-        "market_cap": 6569697639.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "stellar",
-        "name": "Stellar",
-        "symbol": "XLM/BTC",
-        "market_cap": 5926157580.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "whitebit",
-        "name": "WhiteBIT Coin",
-        "symbol": "WBTC/BTC",
-        "market_cap": 5781127444.0,
+        "market_cap": 6782570937.0,
         "exchange": "binance"
     },
     {
         "id": "cardano",
         "name": "Cardano",
         "symbol": "ADA/BTC",
-        "market_cap": 5450208357.0,
+        "market_cap": 6148310801.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "stellar",
+        "name": "Stellar",
+        "symbol": "XLM/BTC",
+        "market_cap": 5939279932.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "whitebit",
+        "name": "WhiteBIT Coin",
+        "symbol": "WBTC/BTC",
+        "market_cap": 5848712143.0,
         "exchange": "binance"
     },
     {
         "id": "monero",
         "name": "Monero",
         "symbol": "XMR/BTC",
-        "market_cap": 5224311519.0,
+        "market_cap": 5345826928.0,
         "exchange": "binance"
     },
     {
         "id": "chainlink",
         "name": "Chainlink",
         "symbol": "LINK/BTC",
-        "market_cap": 5112564428.0,
+        "market_cap": 5204790071.0,
         "exchange": "binance"
     },
     {
         "id": "canton-network",
         "name": "Canton",
         "symbol": "BCC/BTC",
-        "market_cap": 4712480961.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "dai",
-        "name": "Dai",
-        "symbol": "DAI/BNB",
-        "market_cap": 4035570510.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "usd1-wlfi",
-        "name": "USD1",
-        "symbol": "USD1/USDT",
-        "market_cap": 4021204542.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "the-open-network",
-        "name": "Gram (prev. Toncoin)",
-        "symbol": "GRAM/FDUSD",
-        "market_cap": 3964495076.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "bitcoin-cash",
-        "name": "Bitcoin Cash",
-        "symbol": "BCHABC/BTC",
-        "market_cap": 3958203142.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "ethena-usde",
-        "name": "Ethena USDe",
-        "symbol": "USDE/USDC",
-        "market_cap": 3882922637.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "litecoin",
-        "name": "Litecoin",
-        "symbol": "LTC/BTC",
-        "market_cap": 2934524836.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "hedera-hashgraph",
-        "name": "Hedera",
-        "symbol": "HBAR/BNB",
-        "market_cap": 2737037069.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "sui",
-        "name": "Sui",
-        "symbol": "SUI/USDT",
-        "market_cap": 2636117583.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "global-dollar",
-        "name": "Global Dollar",
-        "symbol": "USDG/SGD",
-        "market_cap": 2630505826.0,
-        "exchange": "okx"
-    },
-    {
-        "id": "avalanche-2",
-        "name": "Avalanche",
-        "symbol": "AVAX/BNB",
-        "market_cap": 2591426051.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "paypal-usd",
-        "name": "PayPal USD",
-        "symbol": "PYUSD/USDT",
-        "market_cap": 2421711826.0,
-        "exchange": "okx"
-    },
-    {
-        "id": "crypto-com-chain",
-        "name": "Cronos",
-        "symbol": "CROSS/USDT",
-        "market_cap": 2324996429.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "near",
-        "name": "NEAR Protocol",
-        "symbol": "NEAR/BNB",
-        "market_cap": 2257165281.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "tether-gold",
-        "name": "Tether Gold",
-        "symbol": "XAUT/USDT",
-        "market_cap": 2228381783.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "shiba-inu",
-        "name": "Shiba Inu",
-        "symbol": "SHIB/USDT",
-        "market_cap": 2213837555.0,
+        "market_cap": 4801656679.0,
         "exchange": "binance"
     },
     {
         "id": "lab",
         "name": "LAB",
         "symbol": "TSLAB/USDT",
-        "market_cap": 2144865946.0,
+        "market_cap": 4384709127.0,
         "exchange": "binance"
     },
     {
-        "id": "memecore",
-        "name": "MemeCore",
-        "symbol": "QTUM/ETH",
-        "market_cap": 2095200149.0,
+        "id": "the-open-network",
+        "name": "Gram (prev. Toncoin)",
+        "symbol": "GRAM/FDUSD",
+        "market_cap": 4220267217.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "bitcoin-cash",
+        "name": "Bitcoin Cash",
+        "symbol": "BCHABC/BTC",
+        "market_cap": 4166631949.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "dai",
+        "name": "Dai",
+        "symbol": "DAI/BNB",
+        "market_cap": 4050494100.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "usd1-wlfi",
+        "name": "USD1",
+        "symbol": "USD1/USDT",
+        "market_cap": 4014570392.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "ethena-usde",
+        "name": "Ethena USDe",
+        "symbol": "USDE/USDC",
+        "market_cap": 3877406165.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "litecoin",
+        "name": "Litecoin",
+        "symbol": "LTC/BTC",
+        "market_cap": 3066151800.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "hedera-hashgraph",
+        "name": "Hedera",
+        "symbol": "HBAR/BNB",
+        "market_cap": 2876253551.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "sui",
+        "name": "Sui",
+        "symbol": "SUI/USDT",
+        "market_cap": 2665995632.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "global-dollar",
+        "name": "Global Dollar",
+        "symbol": "USDG/SGD",
+        "market_cap": 2647749111.0,
+        "exchange": "okx"
+    },
+    {
+        "id": "avalanche-2",
+        "name": "Avalanche",
+        "symbol": "AVAX/BNB",
+        "market_cap": 2610606739.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "paypal-usd",
+        "name": "PayPal USD",
+        "symbol": "PYUSD/USDT",
+        "market_cap": 2498056571.0,
+        "exchange": "okx"
+    },
+    {
+        "id": "crypto-com-chain",
+        "name": "Cronos",
+        "symbol": "CROSS/USDT",
+        "market_cap": 2427636989.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "near",
+        "name": "NEAR Protocol",
+        "symbol": "NEAR/BNB",
+        "market_cap": 2251765270.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "shiba-inu",
+        "name": "Shiba Inu",
+        "symbol": "SHIB/USDT",
+        "market_cap": 2236028345.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "tether-gold",
+        "name": "Tether Gold",
+        "symbol": "XAUT/USDT",
+        "market_cap": 2230346375.0,
         "exchange": "binance"
     },
     {
         "id": "blackrock-usd-institutional-digital-liquidity-fund",
         "name": "BlackRock USD Institutional Digital Liquidity Fund",
         "symbol": "BUIDL/USDT",
-        "market_cap": 1958822079.0,
+        "market_cap": 1960483481.0,
         "exchange": "weex"
     },
     {
         "id": "ondo-us-dollar-yield",
         "name": "Ondo US Dollar Yield",
         "symbol": "USDY/USDT",
-        "market_cap": 1883361304.0,
+        "market_cap": 1874527595.0,
         "exchange": "bybit"
     },
     {
         "id": "bittensor",
         "name": "Bittensor",
         "symbol": "TAO/BTC",
-        "market_cap": 1800200615.0,
+        "market_cap": 1781487226.0,
         "exchange": "binance"
     },
     {
         "id": "uniswap",
         "name": "Uniswap",
         "symbol": "UNI/BNB",
-        "market_cap": 1743439143.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "pax-gold",
-        "name": "PAX Gold",
-        "symbol": "PAXG/BNB",
-        "market_cap": 1645896903.0,
+        "market_cap": 1701853069.0,
         "exchange": "binance"
     },
     {
         "id": "world-liberty-financial",
         "name": "World Liberty Financial",
         "symbol": "WLFI/USDT",
-        "market_cap": 1590041234.0,
+        "market_cap": 1653969311.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "pax-gold",
+        "name": "PAX Gold",
+        "symbol": "PAXG/BNB",
+        "market_cap": 1647007550.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "memecore",
+        "name": "MemeCore",
+        "symbol": "QTUM/ETH",
+        "market_cap": 1644095931.0,
         "exchange": "binance"
     },
     {
         "id": "aster-2",
         "name": "Aster",
         "symbol": "ASTER/USDT",
-        "market_cap": 1498184217.0,
+        "market_cap": 1499448321.0,
         "exchange": "binance"
     },
     {
         "id": "okb",
         "name": "OKB",
         "symbol": "OKB/EUR",
-        "market_cap": 1479934484.0,
+        "market_cap": 1468634880.0,
         "exchange": "okx"
-    },
-    {
-        "id": "ripple-usd",
-        "name": "Ripple USD",
-        "symbol": "RLUSD/USDT",
-        "market_cap": 1426395703.0,
-        "exchange": "binance"
     },
     {
         "id": "ondo-finance",
         "name": "Ondo",
         "symbol": "ONDO/USDT",
-        "market_cap": 1402454101.0,
+        "market_cap": 1408356629.0,
         "exchange": "binance"
     },
     {
         "id": "htx-dao",
         "name": "HTX DAO",
         "symbol": "HTX/USDT",
-        "market_cap": 1313781681.0,
+        "market_cap": 1404403241.0,
         "exchange": "bybit"
     },
     {
-        "id": "worldcoin-wld",
-        "name": "Worldcoin",
-        "symbol": "WLD/USDT",
-        "market_cap": 1284362527.0,
+        "id": "ripple-usd",
+        "name": "Ripple USD",
+        "symbol": "RLUSD/USDT",
+        "market_cap": 1377576851.0,
         "exchange": "binance"
     },
     {
         "id": "polkadot",
         "name": "Polkadot",
         "symbol": "DOT/BNB",
-        "market_cap": 1274828664.0,
+        "market_cap": 1295463499.0,
         "exchange": "binance"
     },
     {
         "id": "mantle",
         "name": "Mantle",
         "symbol": "MNTC/USDT",
-        "market_cap": 1248835432.0,
+        "market_cap": 1274385495.0,
         "exchange": "weex"
     },
     {
         "id": "falcon-finance",
         "name": "Falcon USD",
         "symbol": "USDF/USD",
-        "market_cap": 1241001092.0,
+        "market_cap": 1243212207.0,
         "exchange": "bitfinex"
     },
     {
-        "id": "sky",
-        "name": "Sky",
-        "symbol": "SKYCOIN/BTC",
-        "market_cap": 1218068456.0,
+        "id": "worldcoin-wld",
+        "name": "Worldcoin",
+        "symbol": "WLD/USDT",
+        "market_cap": 1242144712.0,
         "exchange": "binance"
     },
     {
         "id": "usdd",
         "name": "USDD",
         "symbol": "USDD/USDT",
-        "market_cap": 1210563241.0,
+        "market_cap": 1236642208.0,
         "exchange": "weex"
-    },
-    {
-        "id": "bfusd",
-        "name": "BFUSD",
-        "symbol": "BFUSD/USDT",
-        "market_cap": 1151081046.0,
-        "exchange": "binance"
     },
     {
         "id": "aave",
         "name": "Aave",
         "symbol": "AAVE/BNB",
-        "market_cap": 1150247264.0,
+        "market_cap": 1179261280.0,
         "exchange": "binance"
     },
     {
-        "id": "pi-network",
-        "name": "Pi Network",
-        "symbol": "PIVX/BTC",
-        "market_cap": 1121485227.0,
+        "id": "bfusd",
+        "name": "BFUSD",
+        "symbol": "BFUSD/USDT",
+        "market_cap": 1152375130.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "sky",
+        "name": "Sky",
+        "symbol": "SKYCOIN/BTC",
+        "market_cap": 1126749999.0,
         "exchange": "binance"
     },
     {
         "id": "morpho",
         "name": "Morpho",
         "symbol": "MORPHO/USDT",
-        "market_cap": 1115736695.0,
+        "market_cap": 1100040182.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "pi-network",
+        "name": "Pi Network",
+        "symbol": "PIVX/BTC",
+        "market_cap": 1082402738.0,
         "exchange": "binance"
     },
     {
         "id": "internet-computer",
         "name": "Internet Computer",
         "symbol": "ICP/BTC",
-        "market_cap": 1080859441.0,
+        "market_cap": 1063040715.0,
         "exchange": "binance"
     },
     {
         "id": "bitget-token",
         "name": "Bitget Token",
         "symbol": "BGBP/USDC",
-        "market_cap": 1040005769.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "ethereum-classic",
-        "name": "Ethereum Classic",
-        "symbol": "ETC/ETH",
-        "market_cap": 980927917.0,
+        "market_cap": 1050393814.0,
         "exchange": "binance"
     },
     {
         "id": "dexe",
         "name": "DeXe",
         "symbol": "DEXE/ETH",
-        "market_cap": 929911217.0,
+        "market_cap": 998290928.0,
         "exchange": "binance"
     },
     {
         "id": "pepe",
         "name": "Pepe",
         "symbol": "PEPE/USDT",
-        "market_cap": 919175396.0,
+        "market_cap": 988542955.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "ethereum-classic",
+        "name": "Ethereum Classic",
+        "symbol": "ETC/ETH",
+        "market_cap": 975048014.0,
         "exchange": "binance"
     },
     {
         "id": "united-stables",
         "name": "United Stables",
         "symbol": "QTUM/ETH",
-        "market_cap": 893314037.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "quant-network",
-        "name": "Quant",
-        "symbol": "QNT/BTC",
-        "market_cap": 863635421.0,
+        "market_cap": 894291126.0,
         "exchange": "binance"
     },
     {
         "id": "kucoin-shares",
         "name": "KuCoin",
         "symbol": "KCS/USDT",
-        "market_cap": 857357864.0,
+        "market_cap": 860067564.0,
         "exchange": "bybit"
+    },
+    {
+        "id": "quant-network",
+        "name": "Quant",
+        "symbol": "QNT/BTC",
+        "market_cap": 852055556.0,
+        "exchange": "binance"
     },
     {
         "id": "usdgo",
         "name": "USDGO",
         "symbol": "USDGO/USDT",
-        "market_cap": 767102476.0,
+        "market_cap": 767765834.0,
         "exchange": "weex"
-    },
-    {
-        "id": "stable-2",
-        "name": "​​Stable",
-        "symbol": "STABLE/USDT",
-        "market_cap": 751309110.0,
-        "exchange": "binance"
     },
     {
         "id": "audiera",
         "name": "Audiera",
         "symbol": "BEAT/USDT",
-        "market_cap": 747260283.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "kaspa",
-        "name": "Kaspa",
-        "symbol": "KAS/USDT",
-        "market_cap": 741017534.0,
+        "market_cap": 758442124.0,
         "exchange": "binance"
     },
     {
         "id": "superstate-short-duration-us-government-securities-fund-ustb",
         "name": "Invesco Short Duration US Government Securities Fund",
         "symbol": "USTBL/USDT",
-        "market_cap": 740635507.0,
+        "market_cap": 758350327.0,
         "exchange": "xt"
+    },
+    {
+        "id": "kaspa",
+        "name": "Kaspa",
+        "symbol": "KAS/USDT",
+        "market_cap": 745545754.0,
+        "exchange": "binance"
     },
     {
         "id": "render-token",
         "name": "Render",
         "symbol": "RENDER/BTC",
-        "market_cap": 728507349.0,
+        "market_cap": 721729318.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "stable-2",
+        "name": "​​Stable",
+        "symbol": "STABLE/USDT",
+        "market_cap": 719597360.0,
         "exchange": "binance"
     },
     {
         "id": "cosmos",
         "name": "Cosmos Hub",
         "symbol": "ATOM/BNB",
-        "market_cap": 718291316.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "jupiter-exchange-solana",
-        "name": "Jupiter",
-        "symbol": "JUP/USDT",
-        "market_cap": 701901120.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "polygon-ecosystem-token",
-        "name": "POL (ex-MATIC)",
-        "symbol": "POLY/BTC",
-        "market_cap": 687022293.0,
+        "market_cap": 706112789.0,
         "exchange": "binance"
     },
     {
         "id": "algorand",
         "name": "Algorand",
         "symbol": "ALGO/BNB",
-        "market_cap": 686737117.0,
+        "market_cap": 703764795.0,
         "exchange": "binance"
     },
     {
-        "id": "nexo",
-        "name": "NEXO",
-        "symbol": "NEXO/USDT",
-        "market_cap": 678090581.0,
+        "id": "jupiter-exchange-solana",
+        "name": "Jupiter",
+        "symbol": "JUP/USDT",
+        "market_cap": 698645247.0,
         "exchange": "binance"
     },
     {
         "id": "just",
         "name": "JUST",
         "symbol": "JST/BNB",
-        "market_cap": 663022748.0,
+        "market_cap": 690895996.0,
         "exchange": "binance"
     },
     {
-        "id": "adi-token",
-        "name": "ADI",
-        "symbol": "ADION/USDT",
-        "market_cap": 646520945.0,
-        "exchange": "weex"
+        "id": "polygon-ecosystem-token",
+        "name": "POL (ex-MATIC)",
+        "symbol": "POLY/BTC",
+        "market_cap": 682655631.0,
+        "exchange": "binance"
     },
     {
-        "id": "usdtb",
-        "name": "USDtb",
-        "symbol": "USDTB/USDT",
-        "market_cap": 635104360.0,
-        "exchange": "bybit"
+        "id": "nexo",
+        "name": "NEXO",
+        "symbol": "NEXO/USDT",
+        "market_cap": 666114109.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "bianrensheng",
+        "name": "币安人生 (BinanceLife)",
+        "symbol": "币安人生/USDT",
+        "market_cap": 655906013.0,
+        "exchange": "binance"
     },
     {
         "id": "ethena",
         "name": "Ethena",
         "symbol": "ENA/BTC",
-        "market_cap": 626105218.0,
+        "market_cap": 651963459.0,
         "exchange": "binance"
+    },
+    {
+        "id": "usdtb",
+        "name": "USDtb",
+        "symbol": "USDTB/USDT",
+        "market_cap": 635690048.0,
+        "exchange": "bybit"
+    },
+    {
+        "id": "adi-token",
+        "name": "ADI",
+        "symbol": "ADION/USDT",
+        "market_cap": 635413945.0,
+        "exchange": "weex"
     },
     {
         "id": "gatechain-token",
         "name": "Gate",
         "symbol": "GTO/BTC",
-        "market_cap": 620762706.0,
+        "market_cap": 626129402.0,
         "exchange": "binance"
     },
     {
         "id": "beldex",
         "name": "Beldex",
         "symbol": "BDXN/USDT",
-        "market_cap": 607778850.0,
+        "market_cap": 618346216.0,
         "exchange": "weex"
-    },
-    {
-        "id": "bianrensheng",
-        "name": "币安人生 (BinanceLife)",
-        "symbol": "币安人生/USDT",
-        "market_cap": 606024128.0,
-        "exchange": "binance"
     },
     {
         "id": "janus-henderson-anemoy-aaa-clo-fund",
         "name": "Janus Henderson Anemoy AAA CLO Fund",
         "symbol": "RJAAA/USDT",
-        "market_cap": 596475097.0,
+        "market_cap": 596981006.0,
         "exchange": "bitget"
-    },
-    {
-        "id": "venice-token",
-        "name": "Venice Token",
-        "symbol": "VVV/USDT",
-        "market_cap": 572961070.0,
-        "exchange": "binance"
     },
     {
         "id": "pump-fun",
         "name": "Pump.fun",
         "symbol": "PUMP/USDT",
-        "market_cap": 553492960.0,
+        "market_cap": 573849315.0,
         "exchange": "binance"
     },
     {
         "id": "filecoin",
         "name": "Filecoin",
         "symbol": "FIL/BNB",
-        "market_cap": 545169261.0,
+        "market_cap": 545400796.0,
         "exchange": "binance"
-    },
-    {
-        "id": "gho",
-        "name": "GHO",
-        "symbol": "GHOST/USDT",
-        "market_cap": 522250337.0,
-        "exchange": "weex"
     },
     {
         "id": "flare-networks",
         "name": "Flare",
         "symbol": "FLR/EUR",
-        "market_cap": 515089476.0,
+        "market_cap": 529235747.0,
         "exchange": "okx"
+    },
+    {
+        "id": "gho",
+        "name": "GHO",
+        "symbol": "GHOST/USDT",
+        "market_cap": 522863347.0,
+        "exchange": "weex"
+    },
+    {
+        "id": "lighter",
+        "name": "Lighter",
+        "symbol": "LIT/BTC",
+        "market_cap": 520597922.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "venice-token",
+        "name": "Venice Token",
+        "symbol": "VVV/USDT",
+        "market_cap": 495549348.0,
+        "exchange": "binance"
     },
     {
         "id": "xdce-crowd-sale",
         "name": "XDC Network",
         "symbol": "XDC/USDT",
-        "market_cap": 498547605.0,
+        "market_cap": 493005452.0,
         "exchange": "weex"
-    },
-    {
-        "id": "usual-usd",
-        "name": "Usual USD",
-        "symbol": "NMSUSD02/BRL",
-        "market_cap": 482869085.0,
-        "exchange": "mercado"
     },
     {
         "id": "midnight-3",
         "name": "Midnight",
         "symbol": "NIGHT/USDT",
-        "market_cap": 463467802.0,
+        "market_cap": 486977085.0,
         "exchange": "binance"
     },
     {
-        "id": "hash-2",
-        "name": "Provenance Blockchain",
-        "symbol": "HASH/USDT",
-        "market_cap": 460444263.0,
-        "exchange": "weex"
+        "id": "usual-usd",
+        "name": "Usual USD",
+        "symbol": "NMSUSD02/BRL",
+        "market_cap": 483115880.0,
+        "exchange": "mercado"
+    },
+    {
+        "id": "aerodrome-finance",
+        "name": "Aerodrome Finance",
+        "symbol": "AERO/USDT",
+        "market_cap": 476761197.0,
+        "exchange": "binance"
     },
     {
         "id": "aptos",
         "name": "Aptos",
         "symbol": "APT/BTC",
-        "market_cap": 452266400.0,
+        "market_cap": 453786408.0,
         "exchange": "binance"
     },
     {
         "id": "usx",
         "name": "USX",
         "symbol": "EUSX/USDC",
-        "market_cap": 446182343.0,
+        "market_cap": 448176488.0,
         "exchange": "bullish"
-    },
-    {
-        "id": "lighter",
-        "name": "Lighter",
-        "symbol": "LIT/BTC",
-        "market_cap": 444454696.0,
-        "exchange": "binance"
     },
     {
         "id": "arbitrum",
         "name": "Arbitrum",
         "symbol": "ARB/BTC",
-        "market_cap": 436779695.0,
+        "market_cap": 437368501.0,
         "exchange": "binance"
     },
     {
         "id": "true-usd",
         "name": "TrueUSD",
         "symbol": "TUSD/BTC",
-        "market_cap": 431001734.0,
+        "market_cap": 431605228.0,
         "exchange": "binance"
     },
     {
-        "id": "aerodrome-finance",
-        "name": "Aerodrome Finance",
-        "symbol": "AERO/USDT",
-        "market_cap": 430209570.0,
-        "exchange": "binance"
+        "id": "hash-2",
+        "name": "Provenance Blockchain",
+        "symbol": "HASH/USDT",
+        "market_cap": 425246431.0,
+        "exchange": "weex"
     },
     {
         "id": "injective-protocol",
         "name": "Injective",
         "symbol": "INJ/BNB",
-        "market_cap": 418749128.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "euro-coin",
-        "name": "EURC",
-        "symbol": "EURC/USD",
-        "market_cap": 406840340.0,
-        "exchange": "okx"
-    },
-    {
-        "id": "dash",
-        "name": "Dash",
-        "symbol": "DASH/BTC",
-        "market_cap": 391929107.0,
+        "market_cap": 407562175.0,
         "exchange": "binance"
     },
     {
         "id": "pancakeswap-token",
         "name": "PancakeSwap",
         "symbol": "CAKE/BNB",
-        "market_cap": 388068294.0,
+        "market_cap": 399173485.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "euro-coin",
+        "name": "EURC",
+        "symbol": "EURC/USD",
+        "market_cap": 392743351.0,
+        "exchange": "okx"
+    },
+    {
+        "id": "dash",
+        "name": "Dash",
+        "symbol": "DASH/BTC",
+        "market_cap": 390148088.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "bonk",
+        "name": "Bonk",
+        "symbol": "BONK/USDT",
+        "market_cap": 370533155.0,
         "exchange": "binance"
     },
     {
         "id": "pudgy-penguins",
         "name": "Pudgy Penguins",
         "symbol": "PENGU/USDT",
-        "market_cap": 370018882.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "fetch-ai",
-        "name": "Artificial Superintelligence Alliance",
-        "symbol": "FET/BNB",
-        "market_cap": 366062807.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "official-trump",
-        "name": "Official Trump",
-        "symbol": "TRUMP/USDT",
-        "market_cap": 365077581.0,
+        "market_cap": 366656927.0,
         "exchange": "binance"
     },
     {
         "id": "vechain",
         "name": "VeChain",
         "symbol": "VET/BTC",
-        "market_cap": 353583668.0,
+        "market_cap": 355444825.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "official-trump",
+        "name": "Official Trump",
+        "symbol": "TRUMP/USDT",
+        "market_cap": 351489316.0,
         "exchange": "binance"
     },
     {
         "id": "hastra-prime",
         "name": "Hastra PRIME",
         "symbol": "PRIME/USDT",
-        "market_cap": 346901572.0,
+        "market_cap": 347223566.0,
         "exchange": "bybit"
     },
     {
-        "id": "bonk",
-        "name": "Bonk",
-        "symbol": "BONK/USDT",
-        "market_cap": 340706270.0,
+        "id": "ether-fi",
+        "name": "Ether.fi",
+        "symbol": "ETHFI/BTC",
+        "market_cap": 345586563.0,
         "exchange": "binance"
     },
     {
-        "id": "virtual-protocol",
-        "name": "Virtuals Protocol",
-        "symbol": "VIRTUAL/USDT",
-        "market_cap": 325521056.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "jito-governance-token",
-        "name": "Jito",
-        "symbol": "JTO/USDT",
-        "market_cap": 322220087.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "celestia",
-        "name": "Celestia",
-        "symbol": "TIA/BTC",
-        "market_cap": 321590104.0,
+        "id": "fetch-ai",
+        "name": "Artificial Superintelligence Alliance",
+        "symbol": "FET/BNB",
+        "market_cap": 345477212.0,
         "exchange": "binance"
     },
     {
         "id": "spx6900",
         "name": "SPX6900",
         "symbol": "SPX/USDT",
-        "market_cap": 319683469.0,
+        "market_cap": 327885516.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "virtual-protocol",
+        "name": "Virtuals Protocol",
+        "symbol": "VIRTUAL/USDT",
+        "market_cap": 327520153.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "celestia",
+        "name": "Celestia",
+        "symbol": "TIA/BTC",
+        "market_cap": 317281306.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "jito-governance-token",
+        "name": "Jito",
+        "symbol": "JTO/USDT",
+        "market_cap": 307737996.0,
         "exchange": "binance"
     },
     {
         "id": "first-digital-usd",
         "name": "First Digital USD",
         "symbol": "FDUSD/BUSD",
-        "market_cap": 304923258.0,
+        "market_cap": 305390984.0,
         "exchange": "binance"
     },
     {
         "id": "terra-luna",
         "name": "Terra Luna Classic",
         "symbol": "LUNC/BUSD",
-        "market_cap": 301127484.0,
+        "market_cap": 299757349.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "sun-token",
+        "name": "Sun Token",
+        "symbol": "SUN/BTC",
+        "market_cap": 298309387.0,
         "exchange": "binance"
     },
     {
         "id": "grass",
         "name": "Grass",
         "symbol": "GRASS/USDT",
-        "market_cap": 298797529.0,
+        "market_cap": 295204094.0,
         "exchange": "binance"
     },
     {
         "id": "sei-network",
         "name": "Sei",
         "symbol": "SEI/BNB",
-        "market_cap": 291141913.0,
+        "market_cap": 286699822.0,
         "exchange": "binance"
     },
     {
         "id": "apxusd",
         "name": "apxUSD",
         "symbol": "APXUSD/USD",
-        "market_cap": 281897879.0,
+        "market_cap": 285166165.0,
         "exchange": "kraken"
     },
     {
-        "id": "sun-token",
-        "name": "Sun Token",
-        "symbol": "SUN/BTC",
-        "market_cap": 279566872.0,
+        "id": "curve-dao-token",
+        "name": "Curve DAO",
+        "symbol": "CRV/BNB",
+        "market_cap": 283536234.0,
         "exchange": "binance"
     },
     {
         "id": "kinesis-gold",
         "name": "Kinesis Gold",
         "symbol": "NCSKAUR2USD/USDT",
-        "market_cap": 277940489.0,
+        "market_cap": 281971729.0,
         "exchange": "bingx"
-    },
-    {
-        "id": "ether-fi",
-        "name": "Ether.fi",
-        "symbol": "ETHFI/BTC",
-        "market_cap": 275534327.0,
-        "exchange": "binance"
     },
     {
         "id": "blockstack",
         "name": "Stacks",
         "symbol": "STX/BNB",
-        "market_cap": 274244161.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "curve-dao-token",
-        "name": "Curve DAO",
-        "symbol": "CRV/BNB",
-        "market_cap": 273685813.0,
+        "market_cap": 276024081.0,
         "exchange": "binance"
     },
     {
         "id": "pyth-network",
         "name": "Pyth Network",
         "symbol": "PYTH/BTC",
-        "market_cap": 270496601.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "bitcoin-cash-sv",
-        "name": "Bitcoin SV",
-        "symbol": "BSV/BTC",
-        "market_cap": 245516343.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "gnosis",
-        "name": "Gnosis",
-        "symbol": "GNO/USDT",
-        "market_cap": 241736297.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "kite-2",
-        "name": "Kite",
-        "symbol": "KITE/USDT",
-        "market_cap": 241558476.0,
+        "market_cap": 271922136.0,
         "exchange": "binance"
     },
     {
         "id": "ethgas-2",
         "name": "ETHGas",
         "symbol": "GWEI/USDT",
-        "market_cap": 229034182.0,
+        "market_cap": 261699072.0,
         "exchange": "binance"
     },
     {
-        "id": "bittorrent",
-        "name": "BitTorrent",
-        "symbol": "BTT/BTC",
-        "market_cap": 227649131.0,
+        "id": "bitcoin-cash-sv",
+        "name": "Bitcoin SV",
+        "symbol": "BSV/BTC",
+        "market_cap": 257330865.0,
         "exchange": "binance"
     },
     {
-        "id": "apenft",
-        "name": "AINFT",
-        "symbol": "NFT/USD",
-        "market_cap": 227316020.0,
-        "exchange": "okx"
+        "id": "kite-2",
+        "name": "Kite",
+        "symbol": "KITE/USDT",
+        "market_cap": 243607992.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "gnosis",
+        "name": "Gnosis",
+        "symbol": "GNO/USDT",
+        "market_cap": 241948355.0,
+        "exchange": "binance"
     },
     {
         "id": "plasma",
         "name": "Plasma",
         "symbol": "XPL/USDT",
-        "market_cap": 226877239.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "pendle",
-        "name": "Pendle",
-        "symbol": "PENDLE/BTC",
-        "market_cap": 224031178.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "olympus",
-        "name": "Olympus",
-        "symbol": "OHM/USDT",
-        "market_cap": 217666710.0,
-        "exchange": "bingx"
-    },
-    {
-        "id": "build-on",
-        "name": "BUILDon",
-        "symbol": "BNB/BTC",
-        "market_cap": 215394249.0,
+        "market_cap": 241777767.0,
         "exchange": "binance"
     },
     {
         "id": "tezos",
         "name": "Tezos",
         "symbol": "XTZ/BNB",
-        "market_cap": 213670638.0,
+        "market_cap": 240457414.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "bittorrent",
+        "name": "BitTorrent",
+        "symbol": "BTT/BTC",
+        "market_cap": 230626632.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "apenft",
+        "name": "AINFT",
+        "symbol": "NFT/USD",
+        "market_cap": 229253725.0,
+        "exchange": "okx"
+    },
+    {
+        "id": "olympus",
+        "name": "Olympus",
+        "symbol": "OHM/USDT",
+        "market_cap": 222474725.0,
+        "exchange": "bingx"
+    },
+    {
+        "id": "ultima",
+        "name": "Ultima",
+        "symbol": "ULTIMA/USDT",
+        "market_cap": 220899588.0,
+        "exchange": "weex"
+    },
+    {
+        "id": "doublezero",
+        "name": "DoubleZero",
+        "symbol": "A2Z/USDT",
+        "market_cap": 217224928.0,
         "exchange": "binance"
     },
     {
         "id": "unibase",
         "name": "Unibase",
         "symbol": "SUB/BTC",
-        "market_cap": 210157818.0,
+        "market_cap": 213584790.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "pendle",
+        "name": "Pendle",
+        "symbol": "PENDLE/BTC",
+        "market_cap": 212290264.0,
         "exchange": "binance"
     },
     {
         "id": "monad",
         "name": "Monad",
         "symbol": "MON/USDT",
-        "market_cap": 209978888.0,
+        "market_cap": 212191181.0,
         "exchange": "binance"
     },
     {
         "id": "frax",
         "name": "Legacy Frax Dollar",
         "symbol": "FRAX/USDT",
-        "market_cap": 207116192.0,
+        "market_cap": 207401264.0,
         "exchange": "binance"
-    },
-    {
-        "id": "kinesis-silver",
-        "name": "Kinesis Silver",
-        "symbol": "KAG/USDT",
-        "market_cap": 206528336.0,
-        "exchange": "bitmart"
     },
     {
         "id": "conflux-token",
         "name": "Conflux",
         "symbol": "CFX/BTC",
-        "market_cap": 206422530.0,
+        "market_cap": 203085280.0,
         "exchange": "binance"
-    },
-    {
-        "id": "doublezero",
-        "name": "DoubleZero",
-        "symbol": "A2Z/USDT",
-        "market_cap": 203910052.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "telcoin",
-        "name": "Telcoin",
-        "symbol": "TELLR/USDT",
-        "market_cap": 201465658.0,
-        "exchange": "weex"
-    },
-    {
-        "id": "megausd",
-        "name": "MegaUSD",
-        "symbol": "USDM/USDT",
-        "market_cap": 201201904.0,
-        "exchange": "bitmart"
-    },
-    {
-        "id": "jasmycoin",
-        "name": "JasmyCoin",
-        "symbol": "JASMY/USDT",
-        "market_cap": 198102462.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "zebec-network",
-        "name": "Zebec Network",
-        "symbol": "ZBCN/EUR",
-        "market_cap": 196868962.0,
-        "exchange": "okx"
     },
     {
         "id": "layerzero",
         "name": "LayerZero",
         "symbol": "ZRO/BTC",
-        "market_cap": 194759012.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "lido-dao",
-        "name": "Lido DAO",
-        "symbol": "FILDOWN/USDT",
-        "market_cap": 193669629.0,
+        "market_cap": 202683657.0,
         "exchange": "binance"
     },
     {
         "id": "optimism",
         "name": "Optimism",
         "symbol": "PEOPLE/BTC",
-        "market_cap": 193565024.0,
+        "market_cap": 200652041.0,
         "exchange": "binance"
+    },
+    {
+        "id": "megausd",
+        "name": "MegaUSD",
+        "symbol": "USDM/USDT",
+        "market_cap": 200634109.0,
+        "exchange": "bitmart"
     },
     {
         "id": "floki",
         "name": "FLOKI",
         "symbol": "FLOKI/USDT",
-        "market_cap": 192683229.0,
+        "market_cap": 200223567.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "jasmycoin",
+        "name": "JasmyCoin",
+        "symbol": "JASMY/USDT",
+        "market_cap": 199161546.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "lido-dao",
+        "name": "Lido DAO",
+        "symbol": "FILDOWN/USDT",
+        "market_cap": 197363869.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "kinesis-silver",
+        "name": "Kinesis Silver",
+        "symbol": "KAG/USDT",
+        "market_cap": 195971124.0,
+        "exchange": "bitmart"
+    },
+    {
+        "id": "zebec-network",
+        "name": "Zebec Network",
+        "symbol": "ZBCN/EUR",
+        "market_cap": 194050356.0,
+        "exchange": "okx"
+    },
+    {
+        "id": "reallink",
+        "name": "RealLink",
+        "symbol": "ZREAL/USDT",
+        "market_cap": 189746865.0,
+        "exchange": "weex"
+    },
+    {
+        "id": "telcoin",
+        "name": "Telcoin",
+        "symbol": "TELLR/USDT",
+        "market_cap": 188757309.0,
+        "exchange": "weex"
+    },
+    {
+        "id": "build-on",
+        "name": "BUILDon",
+        "symbol": "BNB/BTC",
+        "market_cap": 185461211.0,
         "exchange": "binance"
     },
     {
         "id": "kaia",
         "name": "Kaia",
         "symbol": "KAIA/USDT",
-        "market_cap": 181186194.0,
+        "market_cap": 179980113.0,
         "exchange": "binance"
-    },
-    {
-        "id": "reallink",
-        "name": "RealLink",
-        "symbol": "ZREAL/USDT",
-        "market_cap": 180764065.0,
-        "exchange": "weex"
-    },
-    {
-        "id": "ape-and-pepe",
-        "name": "Ape and Pepe",
-        "symbol": "APEPE/USDT",
-        "market_cap": 180460534.0,
-        "exchange": "bingx"
     },
     {
         "id": "starknet",
         "name": "Starknet",
         "symbol": "STRK/BTC",
-        "market_cap": 179155255.0,
+        "market_cap": 177736869.0,
         "exchange": "binance"
     },
     {
         "id": "the-graph",
         "name": "The Graph",
         "symbol": "GRT/BTC",
-        "market_cap": 176652181.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "decred",
-        "name": "Decred",
-        "symbol": "DCR/BTC",
-        "market_cap": 172590701.0,
+        "market_cap": 175274429.0,
         "exchange": "binance"
     },
     {
         "id": "coco-2",
         "name": "coco",
         "symbol": "COCOS/BNB",
-        "market_cap": 169990861.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "chiliz",
-        "name": "Chiliz",
-        "symbol": "CHZ/BNB",
-        "market_cap": 168613445.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "raydium",
-        "name": "Raydium",
-        "symbol": "RAY/BNB",
-        "market_cap": 168334231.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "pieverse",
-        "name": "Pieverse",
-        "symbol": "PIEVERSE/USDT",
-        "market_cap": 167606526.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "usa",
-        "name": "USAT",
-        "symbol": "USAT/USD",
-        "market_cap": 163497153.0,
-        "exchange": "okx"
-    },
-    {
-        "id": "akash-network",
-        "name": "Akash Network",
-        "symbol": "AKT/USDT",
-        "market_cap": 163313806.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "axie-infinity",
-        "name": "Axie Infinity",
-        "symbol": "AXS/BNB",
-        "market_cap": 157878457.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "syrup",
-        "name": "Maple Finance",
-        "symbol": "SYRUP/USDT",
-        "market_cap": 157873983.0,
+        "market_cap": 172807894.0,
         "exchange": "binance"
     },
     {
         "id": "velvet",
         "name": "Velvet",
         "symbol": "VELVET/USDT",
-        "market_cap": 157239564.0,
+        "market_cap": 172704433.0,
         "exchange": "binance"
     },
     {
-        "id": "falcon-finance-ff",
-        "name": "Falcon Finance",
-        "symbol": "FF/USDT",
-        "market_cap": 154231418.0,
+        "id": "decred",
+        "name": "Decred",
+        "symbol": "DCR/BTC",
+        "market_cap": 169362001.0,
         "exchange": "binance"
     },
     {
-        "id": "iota",
-        "name": "IOTA",
-        "symbol": "IOTA/BTC",
-        "market_cap": 153906321.0,
+        "id": "ape-and-pepe",
+        "name": "Ape and Pepe",
+        "symbol": "APEPE/USDT",
+        "market_cap": 168760062.0,
+        "exchange": "bingx"
+    },
+    {
+        "id": "raydium",
+        "name": "Raydium",
+        "symbol": "RAY/BNB",
+        "market_cap": 167898314.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "chiliz",
+        "name": "Chiliz",
+        "symbol": "CHZ/BNB",
+        "market_cap": 167868075.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "syrup",
+        "name": "Maple Finance",
+        "symbol": "SYRUP/USDT",
+        "market_cap": 165219944.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "pieverse",
+        "name": "Pieverse",
+        "symbol": "PIEVERSE/USDT",
+        "market_cap": 165051684.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "usa",
+        "name": "USAT",
+        "symbol": "USAT/USD",
+        "market_cap": 163708216.0,
+        "exchange": "okx"
+    },
+    {
+        "id": "akash-network",
+        "name": "Akash Network",
+        "symbol": "AKT/USDT",
+        "market_cap": 158475321.0,
         "exchange": "binance"
     },
     {
         "id": "nexus-4",
         "name": "Nexus",
         "symbol": "NEXO/USDT",
-        "market_cap": 153734768.0,
+        "market_cap": 155733070.0,
         "exchange": "binance"
+    },
+    {
+        "id": "axie-infinity",
+        "name": "Axie Infinity",
+        "symbol": "AXS/BNB",
+        "market_cap": 155151340.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "falcon-finance-ff",
+        "name": "Falcon Finance",
+        "symbol": "FF/USDT",
+        "market_cap": 154121711.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "wefi",
+        "name": "WeFi",
+        "symbol": "BLOWFISH/USDT",
+        "market_cap": 153091153.0,
+        "exchange": "weex"
     },
     {
         "id": "ethereum-name-service",
         "name": "Ethereum Name Service",
         "symbol": "ENS/BTC",
-        "market_cap": 153645165.0,
+        "market_cap": 153079437.0,
         "exchange": "binance"
-    },
-    {
-        "id": "ultima",
-        "name": "Ultima",
-        "symbol": "ULTIMA/USDT",
-        "market_cap": 152671807.0,
-        "exchange": "weex"
     },
     {
         "id": "dogwifcoin",
         "name": "dogwifhat",
         "symbol": "WIF/BTC",
-        "market_cap": 152253921.0,
+        "market_cap": 152797295.0,
         "exchange": "binance"
     },
     {
         "id": "agora-dollar",
         "name": "AUSD",
         "symbol": "AUSD/USDT",
-        "market_cap": 151892593.0,
+        "market_cap": 151121977.0,
         "exchange": "bingx"
     },
     {
-        "id": "wefi",
-        "name": "WeFi",
-        "symbol": "BLOWFISH/USDT",
-        "market_cap": 151630052.0,
-        "exchange": "weex"
-    },
-    {
-        "id": "fartcoin",
-        "name": "Fartcoin",
-        "symbol": "FARTCOIN/USDT",
-        "market_cap": 149989360.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "spiko-us-t-bills-money-market-fund",
-        "name": "Spiko US T-Bills Money Market Fund",
-        "symbol": "USTBL/USDT",
-        "market_cap": 146800112.0,
-        "exchange": "xt"
-    },
-    {
-        "id": "swissborg",
-        "name": "SwissBorg",
-        "symbol": "BORG/USDT",
-        "market_cap": 141485911.0,
-        "exchange": "htx"
-    },
-    {
-        "id": "compound-governance-token",
-        "name": "Compound",
-        "symbol": "COMP/BTC",
-        "market_cap": 139711289.0,
+        "id": "iota",
+        "name": "IOTA",
+        "symbol": "IOTA/BTC",
+        "market_cap": 150669334.0,
         "exchange": "binance"
     },
     {
         "id": "eigenlayer",
         "name": "EigenCloud (prev. EigenLayer)",
         "symbol": "EIGEN/BTC",
-        "market_cap": 136841411.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "backpack",
-        "name": "Backpack",
-        "symbol": "BGBP/USDC",
-        "market_cap": 133455391.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "mx-token",
-        "name": "MX",
-        "symbol": "STMX/BTC",
-        "market_cap": 132895378.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "chain-2",
-        "name": "Onyxcoin",
-        "symbol": "XCN/USDT",
-        "market_cap": 132179335.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "trust-wallet-token",
-        "name": "Trust Wallet",
-        "symbol": "TWT/BTC",
-        "market_cap": 131910495.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "gusd",
-        "name": "GUSD",
-        "symbol": "GUSDT/USDT",
-        "market_cap": 130743864.0,
-        "exchange": "lbank"
-    },
-    {
-        "id": "tac",
-        "name": "TAC",
-        "symbol": "TAC/USDT",
-        "market_cap": 126574993.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "apecoin",
-        "name": "ApeCoin",
-        "symbol": "APE/USDT",
-        "market_cap": 126382719.0,
+        "market_cap": 149566420.0,
         "exchange": "binance"
     },
     {
         "id": "bitway",
         "name": "Bitway",
         "symbol": "BTW/USDT",
-        "market_cap": 125981044.0,
+        "market_cap": 147019740.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "spiko-us-t-bills-money-market-fund",
+        "name": "Spiko US T-Bills Money Market Fund",
+        "symbol": "USTBL/USDT",
+        "market_cap": 146902258.0,
+        "exchange": "xt"
+    },
+    {
+        "id": "swissborg",
+        "name": "SwissBorg",
+        "symbol": "BORG/USDT",
+        "market_cap": 144648638.0,
+        "exchange": "htx"
+    },
+    {
+        "id": "compound-governance-token",
+        "name": "Compound",
+        "symbol": "COMP/BTC",
+        "market_cap": 142377957.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "fartcoin",
+        "name": "Fartcoin",
+        "symbol": "FARTCOIN/USDT",
+        "market_cap": 139673390.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "chain-2",
+        "name": "Onyxcoin",
+        "symbol": "XCN/USDT",
+        "market_cap": 133896819.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "mx-token",
+        "name": "MX",
+        "symbol": "STMX/BTC",
+        "market_cap": 133257951.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "gusd",
+        "name": "GUSD",
+        "symbol": "GUSDT/USDT",
+        "market_cap": 130768138.0,
+        "exchange": "lbank"
+    },
+    {
+        "id": "kaito",
+        "name": "KAITO",
+        "symbol": "KAITO/BTC",
+        "market_cap": 128599377.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "trust-wallet-token",
+        "name": "Trust Wallet",
+        "symbol": "TWT/BTC",
+        "market_cap": 125471232.0,
         "exchange": "binance"
     },
     {
         "id": "societe-generale-forge-eurcv",
         "name": "EUR CoinVertible",
         "symbol": "EURCV/USDC",
-        "market_cap": 124994266.0,
+        "market_cap": 124865508.0,
         "exchange": "bullish"
     },
     {
-        "id": "zano",
-        "name": "Zano",
-        "symbol": "ZANO/USDT",
-        "market_cap": 124689124.0,
-        "exchange": "bitmart"
-    },
-    {
-        "id": "kaito",
-        "name": "KAITO",
-        "symbol": "KAITO/BTC",
-        "market_cap": 121868807.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "theta-token",
-        "name": "Theta Network",
-        "symbol": "THETA/BTC",
-        "market_cap": 121752988.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "neo",
-        "name": "NEO",
-        "symbol": "NEO/BTC",
-        "market_cap": 121178536.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "thorchain",
-        "name": "THORChain",
-        "symbol": "RUNE/BNB",
-        "market_cap": 120142201.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "decentraland",
-        "name": "Decentraland",
-        "symbol": "MANA/BTC",
-        "market_cap": 119248573.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "the-sandbox",
-        "name": "The Sandbox",
-        "symbol": "SAND/BNB",
-        "market_cap": 117138361.0,
+        "id": "apecoin",
+        "name": "ApeCoin",
+        "symbol": "APE/USDT",
+        "market_cap": 124710893.0,
         "exchange": "binance"
     },
     {
         "id": "humanity",
         "name": "Humanity",
         "symbol": "ETH/BTC",
-        "market_cap": 116506056.0,
+        "market_cap": 124522086.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "tac",
+        "name": "TAC",
+        "symbol": "TAC/USDT",
+        "market_cap": 122677545.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "theta-token",
+        "name": "Theta Network",
+        "symbol": "THETA/BTC",
+        "market_cap": 122664954.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "thorchain",
+        "name": "THORChain",
+        "symbol": "RUNE/BNB",
+        "market_cap": 122331913.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "neo",
+        "name": "NEO",
+        "symbol": "NEO/BTC",
+        "market_cap": 122022743.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "decentraland",
+        "name": "Decentraland",
+        "symbol": "MANA/BTC",
+        "market_cap": 120700089.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "zano",
+        "name": "Zano",
+        "symbol": "ZANO/USDT",
+        "market_cap": 120338915.0,
+        "exchange": "bitmart"
+    },
+    {
+        "id": "the-black-bull",
+        "name": "The Black Bull",
+        "symbol": "ANSEMSOL/USDT",
+        "market_cap": 119085484.0,
+        "exchange": "weex"
+    },
+    {
+        "id": "the-sandbox",
+        "name": "The Sandbox",
+        "symbol": "SAND/BNB",
+        "market_cap": 116927478.0,
         "exchange": "binance"
     },
     {
         "id": "arweave",
         "name": "Arweave",
         "symbol": "ARK/BTC",
-        "market_cap": 115715770.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "cortex-2",
-        "name": "Cortex",
-        "symbol": "ICX/BTC",
-        "market_cap": 115639840.0,
+        "market_cap": 115369634.0,
         "exchange": "binance"
     },
     {
         "id": "wemix-token",
         "name": "WEMIX",
         "symbol": "WEMIX/USDT",
-        "market_cap": 115137894.0,
+        "market_cap": 114662927.0,
         "exchange": "weex"
-    },
-    {
-        "id": "genius-3",
-        "name": "Genius",
-        "symbol": "GENIUS/USDT",
-        "market_cap": 114618001.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "ozone-chain",
-        "name": "Ozone Chain",
-        "symbol": "BOZO_OLD/USDT",
-        "market_cap": 109279376.0,
-        "exchange": "bingx"
     },
     {
         "id": "basic-attention-token",
         "name": "Basic Attention",
         "symbol": "BAT/BTC",
-        "market_cap": 109210731.0,
+        "market_cap": 113364077.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "genius-3",
+        "name": "Genius",
+        "symbol": "GENIUS/USDT",
+        "market_cap": 112315532.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "backpack",
+        "name": "Backpack",
+        "symbol": "BGBP/USDC",
+        "market_cap": 110920427.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "ozone-chain",
+        "name": "Ozone Chain",
+        "symbol": "OZONE/USDT",
+        "market_cap": 109649882.0,
+        "exchange": "bingx"
+    },
+    {
+        "id": "bc-token",
+        "name": "BCGame Coin",
+        "symbol": "BCC/BTC",
+        "market_cap": 109542863.0,
         "exchange": "binance"
     },
     {
         "id": "vision-3",
         "name": "Vision",
         "symbol": "VSN/USDT",
-        "market_cap": 108083613.0,
+        "market_cap": 108914689.0,
         "exchange": "weex"
     },
     {
-        "id": "rif-token",
-        "name": "Rootstock Infrastructure Framework",
-        "symbol": "RIF/BTC",
-        "market_cap": 107186348.0,
+        "id": "origintrail",
+        "name": "OriginTrail",
+        "symbol": "TRAC/USDT",
+        "market_cap": 106951166.0,
+        "exchange": "weex"
+    },
+    {
+        "id": "vaulta",
+        "name": "Vaulta",
+        "symbol": "GAS/BTC",
+        "market_cap": 106342261.0,
         "exchange": "binance"
     },
     {
         "id": "cash-4",
         "name": "CASH",
         "symbol": "NCASH/BTC",
-        "market_cap": 105110215.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "railgun",
-        "name": "Railgun",
-        "symbol": "GRAIL/USDT",
-        "market_cap": 104684603.0,
-        "exchange": "weex"
-    },
-    {
-        "id": "bc-token",
-        "name": "BCGame Coin",
-        "symbol": "BCC/BTC",
-        "market_cap": 104166895.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "origintrail",
-        "name": "OriginTrail",
-        "symbol": "TRAC/USDT",
-        "market_cap": 103965941.0,
-        "exchange": "weex"
-    },
-    {
-        "id": "gala",
-        "name": "GALA",
-        "symbol": "GALA/USDT",
-        "market_cap": 103073895.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "flying-tulip",
-        "name": "Flying Tulip",
-        "symbol": "MFT/BTC",
-        "market_cap": 103064173.0,
+        "market_cap": 106003586.0,
         "exchange": "binance"
     },
     {
         "id": "theo-short-duration-us-treasury-fund",
         "name": "Theo Short Duration US Treasury Fund",
         "symbol": "THBILL/USDC",
-        "market_cap": 102887162.0,
+        "market_cap": 103080711.0,
         "exchange": "hyperliquid"
     },
     {
-        "id": "bitmart-token",
-        "name": "BitMart",
-        "symbol": "BMX/USDT",
-        "market_cap": 102480017.0,
-        "exchange": "bitmart"
+        "id": "cortex-2",
+        "name": "Cortex",
+        "symbol": "ICX/BTC",
+        "market_cap": 102543190.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "railgun",
+        "name": "Railgun",
+        "symbol": "GRAIL/USDT",
+        "market_cap": 102069670.0,
+        "exchange": "weex"
+    },
+    {
+        "id": "ribbita-by-virtuals",
+        "name": "Ribbita by Virtuals",
+        "symbol": "TIBBIR/USDT",
+        "market_cap": 101714111.0,
+        "exchange": "weex"
+    },
+    {
+        "id": "flying-tulip",
+        "name": "Flying Tulip",
+        "symbol": "MFT/BTC",
+        "market_cap": 100889555.0,
+        "exchange": "binance"
     },
     {
         "id": "apollo-diversified-credit-securitize-fund",
         "name": "Apollo Diversified Credit Securitize Fund",
-        "symbol": "ACREDIT01/BRL",
-        "market_cap": 100480374.0,
+        "symbol": "ACREDIT06/BRL",
+        "market_cap": 100522379.0,
         "exchange": "mercado"
-    },
-    {
-        "id": "solstice",
-        "name": "Solstice",
-        "symbol": "SLX/USDT",
-        "market_cap": 98347668.0,
-        "exchange": "binance"
-    },
-    {
-        "id": "astherus-usdf",
-        "name": "Aster USDF",
-        "symbol": "USDF/USD",
-        "market_cap": 98267219.0,
-        "exchange": "bitfinex"
-    },
-    {
-        "id": "shuffle-2",
-        "name": "Shuffle",
-        "symbol": "SHFL/USDT",
-        "market_cap": 97976517.0,
-        "exchange": "xt"
     },
     {
         "id": "safepal",
         "name": "SafePal",
         "symbol": "SFP/BTC",
-        "market_cap": 97427414.0,
+        "market_cap": 99499143.0,
         "exchange": "binance"
     },
     {
-        "id": "story-2",
-        "name": "Data Network",
-        "symbol": "DATA/BTC",
-        "market_cap": 96964782.0,
+        "id": "immutable-x",
+        "name": "Immutable",
+        "symbol": "IMX/BTC",
+        "market_cap": 99468905.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "bitmart-token",
+        "name": "BitMart",
+        "symbol": "BMX/USDT",
+        "market_cap": 98632864.0,
+        "exchange": "bitmart"
+    },
+    {
+        "id": "astherus-usdf",
+        "name": "Aster USDF",
+        "symbol": "USDF/USD",
+        "market_cap": 98609234.0,
+        "exchange": "bitfinex"
+    },
+    {
+        "id": "rif-token",
+        "name": "Rootstock Infrastructure Framework",
+        "symbol": "RIF/BTC",
+        "market_cap": 98150699.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "gala",
+        "name": "GALA",
+        "symbol": "GALA/USDT",
+        "market_cap": 98043197.0,
         "exchange": "binance"
     },
     {
         "id": "gmt-token",
         "name": "GoMining Token",
         "symbol": "GOMINING/USDT",
-        "market_cap": 96761721.0,
+        "market_cap": 96692646.0,
         "exchange": "bingx"
     },
     {
-        "id": "dydx-chain",
-        "name": "dYdX",
-        "symbol": "DYDX/USDT",
-        "market_cap": 96422198.0,
+        "id": "convex-finance",
+        "name": "Convex Finance",
+        "symbol": "CVX/BTC",
+        "market_cap": 96369678.0,
+        "exchange": "binance"
+    },
+    {
+        "id": "stp-network",
+        "name": "AWE Network",
+        "symbol": "AWE/BTC",
+        "market_cap": 95781045.0,
         "exchange": "binance"
     },
     {
         "id": "derive",
         "name": "Derive",
         "symbol": "DRV/EUR",
-        "market_cap": 96080810.0,
+        "market_cap": 95493280.0,
         "exchange": "kraken"
-    },
-    {
-        "id": "vaulta",
-        "name": "Vaulta",
-        "symbol": "GAS/BTC",
-        "market_cap": 94808608.0,
-        "exchange": "binance"
     }
 ]

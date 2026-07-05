@@ -2,7 +2,7 @@ from sqlmodel import Session, select
 from sqlalchemy.sql import func, desc
 
 from .database import engine
-from models.Coin import Coin
+from models.coin import Coin
 
 def list_coins() -> list[Coin]:
     with Session(engine) as session:

@@ -5,17 +5,6 @@ from services.coin import list_coins, enable_coin, disable_coin
 
 router = APIRouter()
 
-@router.get("/dict")
-def enable():
-    result = []
-    coins = list_coins()
-    for coin in coins:
-        item = {'id': coin['symbol']}
-        if 'ticker' in coin:
-            item['ticker'] = coin['ticker']
-        result.append(item)
-    return result
-
 @router.get("/")
 def list():
     return list_coins()

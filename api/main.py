@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes import coin as coin_router
+from routes import ingestion as ingestion_router
 
 app = FastAPI(title="FastAPI PostgreSQL Bridge")
 
@@ -13,3 +14,4 @@ app.add_middleware(
 )
 
 app.include_router(coin_router.router, prefix="/coin", tags=["coin"])
+app.include_router(ingestion_router.router, prefix="/ingestion", tags=["ingestion"])
