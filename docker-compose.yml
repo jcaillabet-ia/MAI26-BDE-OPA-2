@@ -21,3 +21,56 @@ services:
         "--output",
         "data/samples/btc_ohlcv_sample.json"
       ]
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    restart: always
+    container_name: api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
+    depends_on:
+      cassandra:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+  cassandra:
+    image: cassandra:4
+    container_name: projet_test_cassandra
+    restart: always
+    environment:
+      - MAX_HEAP_SIZE=1G
+      - HEAP_NEWSIZE=256M
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+    healthcheck:
+      test: [ "CMD-SHELL", "nodetool status | grep -q 'UN'" ]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+  postgres:
+    image: postgres:15-alpine
+    restart: always
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+volumes:
+  postgres_data:
+  cassandra_data:
