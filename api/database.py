@@ -8,29 +8,6 @@ from cassandra.concurrent import execute_concurrent_with_args
 # Cassandra Management Functions
 # ==========================================
 
-def create_keyspace(session, name):    
-    create_keyspace_query = f"""
-        CREATE KEYSPACE IF NOT EXISTS {name} 
-        WITH replication = {{ 'class': 'SimpleStrategy', 'replication_factor': 1}};
-    """
-    session.execute(create_keyspace_query)
-
-def create_cassandra_schema(session, keyspace_name = "crypto_bot"):    
-    create_table_query = f"""
-        CREATE TABLE IF NOT EXISTS {keyspace_name}.candles (
-            crypto_id text,
-            bucket_date date,
-            timestamp timestamp,
-            open decimal,
-            high decimal,
-            low decimal,
-            close decimal,
-            volume decimal,
-            PRIMARY KEY ((crypto_id, bucket_date), timestamp)
-        ) WITH CLUSTERING ORDER BY (timestamp DESC);
-    """
-    session.execute(create_table_query)
-
 def save_candles_cassandra(session, symbol, candles):    
     query = """
         INSERT INTO crypto_bot.candles (crypto_id, bucket_date, timestamp, open, high, low, close, volume)
@@ -69,49 +46,9 @@ def load_candles_cassandra(session, symbol, bucket_date, limit):
 
     return rows.all()
 
-
 # ==========================================
 # PostgreSQL Management Functions
 # ==========================================
-
-def open_connection():
-    database_url = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@db:5432/postgres")
-    return psycopg2.connect(database_url, connect_timeout=5)
-
-def create_postgres_schema(conn, schema_name):
-    query = f"CREATE SCHEMA IF NOT EXISTS {schema_name};"
-    with conn.cursor() as cursor:
-        cursor.execute(query)
-    conn.commit()
-
-#def import_postgres_schema(conn)
-    # conn = db.open_connection()
-    # cursor = conn.cursor()
-
-    # schema_path = os.path.join(os.path.dirname(__file__), "schema.sql")
-    # with open(schema_path, "r") as schema_file:
-    #     schema_sql = schema_file.read()
-
-    # cursor.execute(schema_sql)
-    # conn.commit()
-
-def create_postgres_table(conn, schema_name = "crypto_bot"):
-    query = f"""
-        CREATE TABLE IF NOT EXISTS {schema_name}.candles (
-            crypto_id text,
-            bucket_date date,
-            timestamp timestamp,
-            open decimal,
-            high decimal,
-            low decimal,
-            close decimal,
-            volume decimal,
-            PRIMARY KEY (crypto_id, bucket_date, timestamp)
-        );
-    """
-    with conn.cursor() as cursor:
-        cursor.execute(query)
-    conn.commit()
 
 def save_candles_postgres(conn, symbol, candles, schema_name = "crypto_bot"):    
     query = f"""

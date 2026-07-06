@@ -1,5 +1,5 @@
 CREATE KEYSPACE IF NOT EXISTS crypto_bot 
-WITH replication = {{ 'class': 'SimpleStrategy', 'replication_factor': 1}};
+WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': 1};
 
 CREATE TABLE IF NOT EXISTS crypto_bot.candles (
     crypto_id text,

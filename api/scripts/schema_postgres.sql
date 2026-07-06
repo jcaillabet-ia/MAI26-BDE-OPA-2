@@ -8,3 +8,15 @@ CREATE TABLE IF NOT EXISTS public.coin
     enabled boolean DEFAULT false,
     CONSTRAINT coin_pkey PRIMARY KEY (id)
 );
+
+-- CREATE TABLE IF NOT EXISTS public.candles (
+--     crypto_id text,
+--     bucket_date date,
+--     timestamp timestamp,
+--     open decimal,
+--     high decimal,
+--     low decimal,
+--     close decimal,
+--     volume decimal,
+--     PRIMARY KEY (crypto_id, bucket_date, timestamp)
+-- );
