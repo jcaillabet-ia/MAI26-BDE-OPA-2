@@ -1,1 +1,7 @@
-# MAI26-BDE-OPA-2
+# Projet CryptoBot
+
+## Lancement du projet
+
+```bash
+docker compose run ingestion
+```
