@@ -83,5 +83,31 @@ def build_dict(length=250):
 
     return coins
 
+def get_exchange(dict, symbol):
+    exchange_name = list(filter(lambda x: x['symbol'] == symbol, dict))[0]['exchange']
+    return getattr(ccxt, exchange_name)()
+
+def fetch_coin(dict, symbol = 'BTC/USDT', timeframe = '1m', limit = 1000):
+    exchange = get_exchange(dict, symbol)
+    
+    timeframe_ms = 1000 * 60
+    if timeframe == '1h':
+        timeframe_ms = 60 * 60 * 1000
+    if timeframe == '1d':
+        timeframe_ms = 24 * 60 * 60 * 1000
+
+    all_candles = []
+
+    iterations = (limit + 999) // 1000
+    since = None
+    for i in range(iterations):
+        candles = exchange.fetch_ohlcv(symbol, timeframe, since=since, limit=1000)
+        if not candles:
+            break
+        all_candles = candles + all_candles
+        since = all_candles[0][0] - (1000 * timeframe_ms)
+        time.sleep(exchange.rateLimit / 1000)
+
+    return all_candles
 
 

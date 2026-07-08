@@ -1,11 +1,14 @@
 fastapi>=0.100.0
+xgboost
 uvicorn>=0.22.0
 cassandra-driver
 ccxt
 coingecko-sdk
 httpx
+joblib
 matplotlib
 pandas
+pytest
 sqlmodel>=0.0.19
 psycopg2-binary>=2.9.6
 python-dotenv
