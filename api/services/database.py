@@ -45,3 +45,11 @@ def run_cassandra_script(script_name):
         query_clean = query.strip() 
         if query_clean:
             conn.execute(query_clean)
+
+def save_cassandra_candles(candles):
+    conn = open_cassandra_connection()
+    cursor = conn.cursor()
+    for candle in candles:
+        cursor.execute("INSERT INTO candles (symbol, timestamp, open, high, low, close, volume) VALUES (%s, %s, %s, %s, %s, %s, %s)", (candle['symbol'], candle['timestamp'], candle['open'], candle['high'], candle['low'], candle['close'], candle['volume']))
+    conn.commit()
+    
