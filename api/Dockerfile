@@ -4,8 +4,12 @@ WORKDIR /app
 
 # Empêcher Python de générer des fichiers .pyc
 ENV PYTHONDONTWRITEBYTECODE=1
-# Empêcher Python de mettre en mémoire tampon la sortie standard
+
+# Afficher directement les logs dans Docker
 ENV PYTHONUNBUFFERED=1
+
+# Permettre à l'API d'importer api/ et api/src/
+ENV PYTHONPATH=/app:/app/src
 
 COPY requirements.txt .
 
