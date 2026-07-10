@@ -8,6 +8,7 @@ from typing import Any
 
 import pandas as pd
 
+from services.clients import build_dict
 from ingestion.ccxt_ohlcv_client import (
     CcxtOHLCVClient,
     OHLCVIngestionError,
@@ -102,14 +103,24 @@ def fetch_asset_ohlcv(
     if n_points <= 0:
         raise ValueError("n_points doit être strictement positif")
 
-    exchanges = exchange_priority or DEFAULT_EXCHANGE_PRIORITY
-    quotes = quote_priority or DEFAULT_QUOTE_PRIORITY
+    market = None
+    try:
+        dic = build_dict()
+        exchange_entry = list(filter(lambda x: x['symbol'].startswith(asset + '/'), dic))[0]
+        if exchange_entry:
+            market = ResolvedMarket(exchange_id=exchange_entry['exchange'], symbol=exchange_entry['symbol'], base_asset=exchange_entry['base'], quote_asset=exchange_entry['quote'], priority_rank=1)
+    except Exception as e:
+        print(e)
 
-    market = resolve_market(
-        asset=asset,
-        exchange_priority=exchanges,
-        quote_priority=quotes,
-    )
+    if not market:
+        exchanges = exchange_priority or DEFAULT_EXCHANGE_PRIORITY
+        quotes = quote_priority or DEFAULT_QUOTE_PRIORITY
+
+        market = resolve_market(
+            asset=asset,
+            exchange_priority=exchanges,
+            quote_priority=quotes,
+        )
 
     client = CcxtOHLCVClient(market.exchange_id)
 

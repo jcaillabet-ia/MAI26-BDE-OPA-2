@@ -2,7 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from routes import admin as admin_router
+from routes import coin as coin_router
 from routes import ingestion as ingestion_router
+from routes import ml as ml_router
 
 app = FastAPI(title="FastAPI PostgreSQL Bridge")
 
@@ -15,4 +17,6 @@ app.add_middleware(
 )
 
 app.include_router(admin_router.router, prefix="/admin", tags=["admin"])
+app.include_router(coin_router.router, prefix="/coin", tags=["coin"])
 app.include_router(ingestion_router.router, prefix="/ingestion", tags=["ingestion"])
+app.include_router(ml_router.router, prefix="/ml", tags=["ml"])
