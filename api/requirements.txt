@@ -4,4 +4,6 @@ cassandra-driver
 sqlmodel>=0.0.19
 psycopg2-binary>=2.9.6
 ccxt==4.5.59
+coingecko-sdk==3.0.0
 pandas
+dotenv
