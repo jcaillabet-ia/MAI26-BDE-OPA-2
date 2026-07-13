@@ -15,6 +15,8 @@ services:
     depends_on:
       cassandra:
         condition: service_healthy
+      cassandra-init:
+        condition: service_completed_successfully
       postgres:
         condition: service_healthy
   cassandra:
@@ -33,6 +35,14 @@ services:
       interval: 15s
       timeout: 5s
       retries: 10
+  cassandra-init:
+    image: cassandra:latest
+    depends_on:
+      - cassandra
+    volumes:
+      - ./api/scripts/schema_cassandra.cql:/init.cql
+    entrypoint: >
+      bash -c " echo 'En attente de Cassandra...'; while ! cqlsh projet_test_cassandra 9042 -e 'describe cluster' > /dev/null 2>&1; do sleep 5; done; echo 'Cassandra est prête ! Initialisation...'; cqlsh projet_test_cassandra 9042 -f /init.cql; "
   postgres:
     image: postgres:15-alpine
     restart: always
@@ -45,6 +55,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./api/scripts/schema_postgres.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 5s
