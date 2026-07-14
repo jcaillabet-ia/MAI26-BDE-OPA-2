@@ -7,7 +7,7 @@ import numpy as np
 
 from services.clients import build_dict
 from services.ingestion import run_ingestion
-from src.MachineLearningV1 import MachineLearningV1
+from src.MachineLearningClassification import MachineLearningClassification
 
 router = APIRouter()
 
@@ -24,7 +24,7 @@ def train(symbol : str):
         raw_data = json.load(f)
         raw_candles = raw_data['ohlcv']
 
-    ml = MachineLearningV1(raw_candles)
+    ml = MachineLearningClassification(raw_candles)
 
     ml.clean()
     ml.setup()
