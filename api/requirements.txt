@@ -1,5 +1,6 @@
 fastapi>=0.100.0
 uvicorn>=0.22.0
+lz4
 cassandra-driver
 sqlmodel>=0.0.19
 scikit-learn==1.9.0
