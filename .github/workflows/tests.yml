@@ -1,0 +1,24 @@
+name: Lancement des tests unitaires
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout on main
+        uses: actions/checkout@v4
+
+      - name: Build API service
+        run: docker compose build api
+
+      - name: Run tests
+        run: docker compose run --rm tests
+
+      - name: Teardown containers
+        if: always()
+        run: docker compose down -v
