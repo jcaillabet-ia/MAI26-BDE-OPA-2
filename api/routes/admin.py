@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, status
 from sqlmodel import Session
 from cassandra.cluster import Session as CassandraSession
+
 
 from models.Coin import Coin
 from services.clients import build_dict
@@ -17,7 +18,7 @@ def empty_postgres():
 def empty_cassandra(session: CassandraSession = Depends(get_cassandra)):
     db.run_cassandra_script("empty_cassandra.cql", session)
 
-@router.post("/postgres/fill")
+@router.post("/postgres/fill", status_code=status.HTTP_204_NO_CONTENT)
 def fill_postgres():
     with Session(db.engine) as session:
         entries = build_dict()
