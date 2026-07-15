@@ -11,7 +11,7 @@ from routes import ml as ml_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):    
-    CLUSTER_IPS = ['cassandra.mai26-bde-opa-2.orb.local'] 
+    CLUSTER_IPS = ['cassandra'] 
     keyspace = "crypto_bot"
     cluster = Cluster(CLUSTER_IPS, compression=True)
     session = cluster.connect(keyspace=keyspace)

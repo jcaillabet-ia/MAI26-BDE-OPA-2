@@ -19,13 +19,17 @@ services:
         condition: service_completed_successfully
       postgres:
         condition: service_healthy
+    networks:
+      - crypto-network
   cassandra:
     image: cassandra:4
-    container_name: projet_test_cassandra
+    container_name: cassandra
     restart: always
     environment:
       - MAX_HEAP_SIZE=1G
       - HEAP_NEWSIZE=256M
+      - CASSANDRA_RPC_ADDRESS=0.0.0.0
+      - CASSANDRA_BROADCAST_RPC_ADDRESS=cassandra
     ports:
       - "9042:9042"
     volumes:
@@ -35,14 +39,20 @@ services:
       interval: 15s
       timeout: 5s
       retries: 10
+    networks:
+      - crypto-network
   cassandra-init:
     image: cassandra:latest
+    container_name: cassandra-init
     depends_on:
-      - cassandra
+      cassandra:
+        condition: service_healthy
     volumes:
       - ./api/scripts/schema_cassandra.cql:/init.cql
     entrypoint: >
-      bash -c " echo 'En attente de Cassandra...'; while ! cqlsh projet_test_cassandra 9042 -e 'describe cluster' > /dev/null 2>&1; do sleep 5; done; echo 'Cassandra est prête ! Initialisation...'; cqlsh projet_test_cassandra 9042 -f /init.cql; "
+      bash -c "echo 'Cassandra prête, initialisation du schéma...'; cqlsh cassandra 9042 -f /init.cql && echo 'Schéma initialisé avec succès.'"
+    networks:
+      - crypto-network
   postgres:
     image: postgres:15-alpine
     restart: always
@@ -61,6 +71,21 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    networks:
+      - crypto-network
+  adminer:
+    image: adminer:latest
+    container_name: projet_test_adminer
+    restart: always
+    ports:
+      - "8082:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - crypto-network
 volumes:
   postgres_data:
   cassandra_data:
+networks:
+  crypto-network:
