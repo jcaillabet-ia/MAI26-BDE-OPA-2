@@ -1,10 +1,17 @@
 from datetime import datetime, timezone
 from dateutil.relativedelta import relativedelta
 
+from cassandra.query import tuple_factory
 from cassandra.cluster import Cluster
+from cassandra.concurrent import execute_concurrent
+from cassandra.query import BatchStatement, ConsistencyLevel, BatchType
+from cassandra.query import dict_factory, SimpleStatement
+from concurrent.futures import ThreadPoolExecutor
 import os
 import psycopg2
 from sqlmodel import Session, create_engine
+from dependencies import get_cassandra
+from fastapi import Depends
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@db:5432/postgres")
 engine = create_engine(DATABASE_URL, echo=True)
@@ -31,38 +38,57 @@ def run_postgres_script(script_name):
     cursor.execute(sql)
     conn.commit()
 
-def open_cassandra_connection(keyspace: str = ''):
-    CLUSTER_IPS = ['cassandra.mai26-bde-opa-2.orb.local'] 
-    cluster = Cluster(CLUSTER_IPS)
-    return cluster.connect(keyspace=keyspace)
-
-def run_cassandra_script(script_name):
-    conn = open_cassandra_connection()
-
+def run_cassandra_script(script_name, session: Session):
     sql = open_script_file(script_name)
     queries = sql.split(';')
 
     for query in queries:
         query_clean = query.strip() 
         if query_clean:
-            conn.execute(query_clean)
+            session.execute(query_clean)
 
-def save_cassandra_candles(crypto_id, candles):
-    conn = open_cassandra_connection("crypto_bot")
+def save_cassandra_candles(crypto_id, candles, session: Session):
+
+    query = "INSERT INTO candles (crypto_id, bucket_date, timestamp, open, high, low, close, volume) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+    prepared = session.prepare(query)
+
+    data_to_insert = []
 
     for candle in candles:
         date = datetime.fromtimestamp(candle['timestamp'] / 1000.0, tz=timezone.utc)
-        bucket_date = date.replace(day=1, hour=0, minute=0, second=0, microsecond=0).date()
+        bucket_date = date.replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0).date()
+        data_to_insert.append((crypto_id, bucket_date, candle['timestamp'], float(candle['open']), float(candle['high']), float(candle['low']), float(candle['close']), float(candle['volume'])))
+    
+    CHUNK_SIZE = 200
+    futures = []
+    MAX_IN_FLIGHT_BATCHES = 20
 
-        conn.execute("INSERT INTO candles (crypto_id, bucket_date, timestamp, open, high, low, close, volume) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", (crypto_id, bucket_date, candle['timestamp'], float(candle['open']), float(candle['high']), float(candle['low']), float(candle['close']), float(candle['volume'])))
+    for i in range(0, len(data_to_insert), CHUNK_SIZE):
+        chunk = data_to_insert[i:i + CHUNK_SIZE]
 
-def load_candles_cassandra(crypto_id, limit = 50000):   
-    conn = open_cassandra_connection("crypto_bot")
+        batch = BatchStatement(batch_type=BatchType.UNLOGGED, consistency_level=ConsistencyLevel.ONE)
+        
+        for row in chunk:
+            batch.add(prepared, row)
+
+        future = session.execute_async(batch)
+        futures.append(future)
+
+        if len(futures) >= MAX_IN_FLIGHT_BATCHES:
+            for f in futures:
+                f.result()
+            futures = []
+
+    for future in futures:
+        future.result()
+
+def load_candles_cassandra(crypto_id,  session: Session, limit = 50000):   
+    session.row_factory = tuple_factory
 
     all_candles = []
 
     current_date = datetime.now(timezone.utc)
-    bucket_date = current_date.replace(day=1, hour=0, minute=0, second=0, microsecond=0).date()
+    bucket_date = current_date.replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0).date()
     
     query = """
         SELECT timestamp, open, high, low, close, volume 
@@ -71,21 +97,40 @@ def load_candles_cassandra(crypto_id, limit = 50000):
         ORDER BY timestamp DESC
         LIMIT ?
     """
-    prepared = conn.prepare(query)
+    prepared = session.prepare(query)
+    prepared.fetch_size = 10000
 
-    while len(all_candles) < limit:
-        remaining = limit - len(all_candles)
-        rows = conn.execute(prepared, (crypto_id, bucket_date))
-        month_candles = list(rows)
+    points_per_partition = 365 * 24
+    nb_year = 1 + limit // points_per_partition
 
-        if not month_candles:
-            break
-            
-        all_candles.extend(month_candles)
-        
-        bucket_date = (datetime.combine(bucket_date, datetime.min.time()) - relativedelta(months=1)).date()
+    futures = []
+    limit_per_partition = 366 * 24
+    for i in range(nb_year):
+        target_bucket = (datetime.combine(bucket_date, datetime.min.time()) - relativedelta(years=i)).date()
+        future = session.execute_async(prepared, (crypto_id, target_bucket, limit_per_partition))
+        futures.append(future)
 
-    all_candles = all_candles[:limit]
-    clean_candles = [row._asdict() for row in all_candles]
+    all_candles = []
+    for future in futures:
+        all_candles.extend(future.result())
 
-    return clean_candles
+    return all_candles[:limit]
+
+def save_postgres_candles(crypto_id, candles):
+    conn = open_postgres_connection()
+    cursor = conn.cursor()
+
+    for candle in candles:
+        date = datetime.fromtimestamp(candle['timestamp'] / 1000.0, tz=timezone.utc)
+        bucket_date = date.replace(day=1, hour=0, minute=0, second=0, microsecond=0).date()
+
+        cursor.execute("INSERT INTO public.candles (crypto_id, bucket_date, timestamp, open, high, low, close, volume) VALUES (%s, %s, to_timestamp(%s / 1000.0), %s, %s, %s, %s, %s)", (crypto_id, bucket_date, candle['timestamp'], float(candle['open']), float(candle['high']), float(candle['low']), float(candle['close']), float(candle['volume'])))
+    conn.commit()
+
+def load_candles_postgres(crypto_id, limit = 50000):
+    conn = open_postgres_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT timestamp, open, high, low, close, volume FROM public.candles WHERE crypto_id = %s ORDER BY timestamp DESC LIMIT %s", (crypto_id, limit))
+    return cursor.fetchall()
+    

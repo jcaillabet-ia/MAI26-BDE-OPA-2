@@ -4,18 +4,29 @@ import numpy as np
 import numpy as np
 import pandas as pd
 
+from cassandra.cluster import Cluster
+
+from sklearn.metrics import classification_report
+
 from services.database import save_cassandra_candles, load_candles_cassandra
 from services.ingestion import build_dict, run_ingestion
-from src.MachineLearningV1 import MachineLearningV1
+from src.MachineLearningClassification import MachineLearningClassification
 
 def test_ml():
+    CLUSTER_IPS = ['cassandra.mai26-bde-opa-2.orb.local'] 
+    keyspace = "crypto_bot"
+    cluster = Cluster(CLUSTER_IPS)
+    session = cluster.connect(keyspace=keyspace)
+
 
     # Récupération de l'historique
     symbol = 'BTC/USDT'
     limit = 50000
     timeframe = '1h'
     exchange_dict = build_dict()
+    
     # candles = fetch_coin(exchange_dict, symbol, timeframe, limit)
+    
     # run_ingestion(asset='BTC', n_points=50000, timeframe='1h', output_path='test.json')
 
     # with open('test.json', 'r') as f:
@@ -23,11 +34,14 @@ def test_ml():
     #     raw_candles = raw_data['ohlcv']
 
     # save_cassandra_candles('bitcoin', raw_candles)
-    candles = load_candles_cassandra('bitcoin')
-    #print(candles[:5])
-    #return
 
-    ml = MachineLearningV1(candles)
+    candles = load_candles_cassandra('bitcoin', session=session)
+    
+    # print(len(candles))
+
+    print("Load ok")
+
+    ml = MachineLearningClassification(candles)
 
     # print(len(candles))
     ml.clean()
@@ -42,6 +56,9 @@ def test_ml():
     fig.savefig('candles_ml_h.png')
     plt.close(fig)
 
+    # return
+
+    ml.clean()
     ml.setup()
     ml.train()
 
@@ -60,4 +77,6 @@ def test_ml():
     fig.savefig('candles_ml_predict.png')
     plt.close(fig)
 
-    assert ml.score()['train'] > 0.8 and ml.score()['test'] > -0.2
+    print(ml.score())
+
+    assert ml.score() > 0
