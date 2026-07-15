@@ -21,6 +21,11 @@ services:
         condition: service_healthy
     networks:
       - crypto-network
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/docs')" ]
+      interval: 10s
+      timeout: 5s
+      retries: 6
   cassandra:
     image: cassandra:4
     container_name: cassandra
@@ -84,6 +89,23 @@ services:
         condition: service_healthy
     networks:
       - crypto-network
+  tests:
+    image: python:3.11-slim
+    container_name: tests
+    profiles:
+      - test
+    volumes:
+      - ./tests:/app
+    working_dir: /app
+    environment:
+      - PYTHONPATH=/app
+    depends_on:
+      api:
+        condition: service_healthy
+    entrypoint: >
+      sh -c " pip install httpx && pip install pytest && pytest -v "
+    networks:
+      crypto-network:
 volumes:
   postgres_data:
   cassandra_data:
