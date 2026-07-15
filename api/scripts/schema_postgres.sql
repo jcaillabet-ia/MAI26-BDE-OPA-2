@@ -4,8 +4,9 @@ CREATE TABLE IF NOT EXISTS public.coin
     symbol text COLLATE pg_catalog."default" NOT NULL,
     name text COLLATE pg_catalog."default" NOT NULL,
     market_cap bigint NOT NULL,
-    ticker text COLLATE pg_catalog."default" NOT NULL,
+    exchange text COLLATE pg_catalog."default" NOT NULL,
     enabled boolean DEFAULT false,
+    score float DEFAULT 0.0,
     CONSTRAINT coin_pkey PRIMARY KEY (id)
 );
 

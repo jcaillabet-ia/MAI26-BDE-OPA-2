@@ -29,7 +29,7 @@ def fill_postgres():
                 quote_asset=entry['quote'],
                 symbol=entry['symbol'],
                 market_cap=entry['market_cap'],
-                ticker=entry['exchange']
+                exchange=entry['exchange']
             )
             coin.save(session)
 
