@@ -1,5 +1,5 @@
 import ccxt.pro as ccxtpro
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, status
 import joblib
 import json
 from pathlib import Path
@@ -7,22 +7,20 @@ import numpy as np
 
 from services.clients import build_dict
 from services.ingestion import run_ingestion
+from services.database import load_candles_cassandra
 from src.MachineLearningClassification import MachineLearningClassification
+from dependencies import get_cassandra
+from cassandra.cluster import Session as CassandraSession
+from sqlmodel import Session, select
+
+from services.database import engine
+from models.Coin import Coin
 
 router = APIRouter()
 
-@router.post("/train")
-def train(symbol : str):
-    # TODO : remplacer par la récupération en base
-    limit = 50000
-    timeframe = '1h'
-    exchange_dict = build_dict()
-
-    run_ingestion(asset='BTC', n_points=50000, timeframe='1h', output_path='test.json')
-
-    with open('test.json', 'r') as f:
-        raw_data = json.load(f)
-        raw_candles = raw_data['ohlcv']
+@router.post("/train", status_code=status.HTTP_204_NO_CONTENT)
+def train(coin_id : str, session: CassandraSession = Depends(get_cassandra)):
+    raw_candles = load_candles_cassandra(coin_id, session)
 
     ml = MachineLearningClassification(raw_candles)
 
@@ -30,9 +28,22 @@ def train(symbol : str):
     ml.setup()
     ml.train()
 
-    indice = 1
-    chemin_fichier = Path("data/models/" + symbol.replace("/", "-") + "-" + str(indice) + ".pkl")
-    chemin_fichier.parent.mkdir(parents=True, exist_ok=True)
+    ml.predict(ml.X_test)
+    score = ml.score()
+    
+
+    with Session(engine) as session:
+        statement = select(Coin).where(Coin.id == coin_id)
+        coin = session.exec(statement).first()
+        
+        if score > coin.score:
+            chemin_fichier = Path("/app/data/models/" + coin_id + ".pkl")
+            chemin_fichier.parent.mkdir(parents=True, exist_ok=True)
+
+            coin.score = score
+            coin.save(session)
+            
+    
     joblib.dump(ml.model, chemin_fichier)
 
 @router.post("/predict")
