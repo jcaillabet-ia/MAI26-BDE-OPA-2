@@ -107,6 +107,16 @@ services:
       sh -c " pip install httpx && pip install pytest && pytest -v "
     networks:
       crypto-network:
+  streamlit:
+    build: ./streamlit
+    command: streamlit run streamlit/main.py --server.port 8501
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 8501:8501
+    image: yourstreamlitapp:latest
+    networks:
+      crypto-network:
 volumes:
   postgres_data:
   cassandra_data:
