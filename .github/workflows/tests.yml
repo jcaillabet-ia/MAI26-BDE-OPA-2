@@ -1,6 +1,7 @@
 name: Lancement des tests unitaires
 
 on:
+  workflow_call:
   push:
     branches:
       - main

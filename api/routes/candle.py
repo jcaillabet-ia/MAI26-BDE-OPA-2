@@ -10,7 +10,7 @@ router = APIRouter()
 def list(id: str, session: Session = Depends(get_cassandra)):
     return load_candles_cassandra(id, session)
 
-@router.get("/{id}/save")
+@router.post("/{id}/save")
 def save(id: str, candles, session: Session = Depends(get_cassandra)):
     return save_cassandra_candles(id, candles, session)
 
