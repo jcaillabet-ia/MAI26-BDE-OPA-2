@@ -1,7 +1,6 @@
+from cassandra.cluster import Session as CassandraSession
 from fastapi import APIRouter, Depends, status
 from sqlmodel import Session
-from cassandra.cluster import Session as CassandraSession
-
 
 from models.Coin import Coin
 from services.clients import build_dict

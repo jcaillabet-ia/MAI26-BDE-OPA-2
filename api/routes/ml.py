@@ -1,20 +1,17 @@
+from cassandra.cluster import Session as CassandraSession
 import ccxt.pro as ccxtpro
 from fastapi import APIRouter, Depends, status
 import joblib
-import json
 from pathlib import Path
 import numpy as np
-
-from services.clients import build_dict
-from services.ingestion import run_ingestion
-from services.database import load_candles_cassandra
-from src.MachineLearningClassification import MachineLearningClassification
-from dependencies import get_cassandra
-from cassandra.cluster import Session as CassandraSession
 from sqlmodel import Session, select
 
-from services.database import engine
+from dependencies import get_cassandra
 from models.Coin import Coin
+from services.clients import build_dict
+from services.database import load_candles_cassandra
+from services.database import engine
+from src.MachineLearningClassification import MachineLearningClassification
 
 router = APIRouter()
 
@@ -30,7 +27,6 @@ def train(coin_id : str, session: CassandraSession = Depends(get_cassandra)):
 
     ml.predict(ml.X_test)
     score = ml.score()
-    
 
     with Session(engine) as session:
         statement = select(Coin).where(Coin.id == coin_id)
