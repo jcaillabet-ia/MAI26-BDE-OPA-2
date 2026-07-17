@@ -1,13 +1,18 @@
 from fastapi import APIRouter, status
 import httpx
 
-from services.coin import list_coins, enable_coin, disable_coin
+from services.coin import list_coins, enable_coin, disable_coin, get_coin
 
 router = APIRouter()
 
 @router.get("/")
 def list():
     return list_coins()
+
+@router.get("/{id}")
+def item(id: str):
+    coin = get_coin(id)
+    return coin
 
 @router.patch("/{id}/enable", status_code=status.HTTP_204_NO_CONTENT)
 def enable(id: str):

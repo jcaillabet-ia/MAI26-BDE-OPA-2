@@ -1,4 +1,3 @@
-from airflow import DAG
 from airflow.decorators import dag, task
 from airflow.utils.dates import days_ago
 
@@ -13,7 +12,7 @@ def task1():
     start_date=days_ago(0),
     catchup=False
 )
-def my_dag():
+def ingestion_dag():
     t1 = task1()
 
-my_dag = my_dag()
+ingestion_dag = ingestion_dag()

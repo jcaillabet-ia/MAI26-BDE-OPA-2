@@ -54,6 +54,8 @@ services:
       timeout: 30s
       retries: 50
     restart: always
+    networks:
+      - airflow-network
 
   airflow-webserver:
     <<: *airflow-common
@@ -79,6 +81,8 @@ services:
       timeout: 10s
       retries: 5
     restart: always
+    networks:
+      - airflow-network
 
   airflow-worker:
     <<: *airflow-common
@@ -91,6 +95,8 @@ services:
       timeout: 10s
       retries: 5
     restart: always
+    networks:
+      - airflow-network
 
   airflow-init:
     <<: *airflow-common
@@ -113,6 +119,8 @@ services:
       timeout: 10s
       retries: 5
     restart: always
+    networks:
+      - airflow-network
 
 volumes:
   postgres-db-volume:

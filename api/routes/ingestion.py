@@ -25,6 +25,7 @@ def run_ingestion(
             timeframe=timeframe,
             n_points=n_points,
             limit_per_request=limit_per_request,
+            output_path=f"/app/data/candles/{asset}.json"
         )
 
     except ValueError as error:
