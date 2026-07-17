@@ -1,3 +1,5 @@
+include:
+  - docker-compose.airflow.yml
 services:
   api:
     build:
@@ -21,6 +23,7 @@ services:
       postgres:
         condition: service_healthy
     networks:
+      - airflow-network
       - crypto-network
     healthcheck:
       test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/docs')" ]
@@ -121,4 +124,5 @@ volumes:
   postgres_data:
   cassandra_data:
 networks:
+  airflow-network:
   crypto-network:

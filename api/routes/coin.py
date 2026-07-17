@@ -1,4 +1,5 @@
 from fastapi import APIRouter, status
+import httpx
 
 from services.coin import list_coins, enable_coin, disable_coin
 
@@ -10,11 +11,17 @@ def list():
 
 @router.patch("/{id}/enable", status_code=status.HTTP_204_NO_CONTENT)
 def enable(id: str):
-    coin = enable_coin(id)
-    return coin
+    enable_coin(id)
+    r = httpx.post("http://airflow-webserver:8080/api/v1/dags/cryptobot_coin_toggle/dagRuns", 
+            json={"conf":{
+                    "command": "enable", 
+                    "coin_id": id}
+                },
+            auth=("airflow", "airflow"))
+    print(r.status_code)
+    print(r.text)
 
 @router.patch("/{id}/disable", status_code=status.HTTP_204_NO_CONTENT)
-def enable(id: str):
-    coin = disable_coin(id)
-    return coin
+def disable(id: str):
+    disable_coin(id)
     
