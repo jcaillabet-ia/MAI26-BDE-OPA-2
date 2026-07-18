@@ -17,14 +17,12 @@ def item(id: str):
 @router.patch("/{id}/enable", status_code=status.HTTP_204_NO_CONTENT)
 def enable(id: str):
     enable_coin(id)
-    r = httpx.post("http://airflow-webserver:8080/api/v1/dags/cryptobot_coin_toggle/dagRuns", 
-            json={"conf":{
-                    "command": "enable", 
-                    "coin_id": id}
-                },
-            auth=("airflow", "airflow"))
-    print(r.status_code)
-    print(r.text)
+    httpx.post("http://airflow-webserver:8080/api/v1/dags/cryptobot_coin_toggle/dagRuns", 
+        json={"conf":{
+                "command": "enable", 
+                "coin_id": id}
+            },
+        auth=("airflow", "airflow"))
 
 @router.patch("/{id}/disable", status_code=status.HTTP_204_NO_CONTENT)
 def disable(id: str):

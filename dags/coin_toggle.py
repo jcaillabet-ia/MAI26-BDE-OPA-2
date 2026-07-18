@@ -20,7 +20,6 @@ def enable_coin(**context):
 
     coin = httpx.get(f"http://api:8000/coin/{coin_id}").json()
     symbol = coin['symbol'].split('/')[0]
-    print(symbol)
     try:
         r = httpx.post("http://api:8000/ingestion/run", 
             json={

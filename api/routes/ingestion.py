@@ -1,4 +1,5 @@
 from fastapi import APIRouter, HTTPException
+import httpx
 
 from services import ingestion as ingestion_service
 
@@ -20,14 +21,20 @@ def run_ingestion(
     Elle délègue au dossier services.
     """
     try:
-        return ingestion_service.run_ingestion(
+        output_path=f"/app/data/candles/{asset}.json"
+        result = ingestion_service.run_ingestion(
             asset=asset,
             timeframe=timeframe,
             n_points=n_points,
             limit_per_request=limit_per_request,
-            output_path=f"/app/data/candles/{asset}.json"
+            output_path=output_path
         )
 
+        httpx.post("http://airflow-webserver:8080/api/v1/dags/cryptobot_load_candles/dagRuns", 
+            json={"conf":{"file": output_path}},
+            auth=("airflow", "airflow"))
+
+        return result
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
 
