@@ -23,7 +23,7 @@ def enable_coin(**context):
     try:
         r = httpx.post("http://api:8000/ingestion/run", 
             json={
-                "asset": symbol,
+                "coin_id": coin_id,
                 "timeframe": "1h",
                 "n_points": 50000
             },
@@ -31,7 +31,6 @@ def enable_coin(**context):
         )
     except httpx.TimeoutException:
         pass
-        
 
 @task
 def disable_coin():

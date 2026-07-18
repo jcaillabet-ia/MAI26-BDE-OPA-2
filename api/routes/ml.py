@@ -1,6 +1,6 @@
 from cassandra.cluster import Session as CassandraSession
 import ccxt.pro as ccxtpro
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, status, Body
 import joblib
 from pathlib import Path
 import numpy as np
@@ -16,7 +16,7 @@ from src.MachineLearningClassification import MachineLearningClassification
 router = APIRouter()
 
 @router.post("/train", status_code=status.HTTP_204_NO_CONTENT)
-def train(coin_id : str, session: CassandraSession = Depends(get_cassandra)):
+def train(coin_id : str = Body(..., embed=True), session: CassandraSession = Depends(get_cassandra)):
     raw_candles = load_candles_cassandra(coin_id, session)
 
     ml = MachineLearningClassification(raw_candles)
@@ -31,8 +31,8 @@ def train(coin_id : str, session: CassandraSession = Depends(get_cassandra)):
     with Session(engine) as session:
         statement = select(Coin).where(Coin.id == coin_id)
         coin = session.exec(statement).first()
-        
-        if score > coin.score:
+
+        if score >= coin.score or coin.score == 0:
             chemin_fichier = Path("/app/data/models/" + coin_id + ".pkl")
             chemin_fichier.parent.mkdir(parents=True, exist_ok=True)
 
