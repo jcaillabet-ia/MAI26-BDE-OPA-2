@@ -1,7 +1,8 @@
+from cassandra.cluster import Cluster
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from cassandra.cluster import Cluster
+from prometheus_fastapi_instrumentator import Instrumentator
 
 from routes import admin as admin_router
 from routes import candle as candle_router
@@ -23,6 +24,7 @@ async def lifespan(app: FastAPI):
     cluster.shutdown()
 
 app = FastAPI(title="FastAPI PostgreSQL Bridge", lifespan=lifespan)
+Instrumentator().instrument(app).expose(app)
 
 app.add_middleware(
     CORSMiddleware,

@@ -23,8 +23,11 @@ services:
       postgres:
         condition: service_healthy
     networks:
-      - airflow-network
-      - crypto-network
+      airflow-network: {}
+      crypto-network: {}
+      monitoring-network:
+        aliases:
+          - api-monitoring
     healthcheck:
       test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/docs')" ]
       interval: 10s
@@ -120,9 +123,31 @@ services:
     image: yourstreamlitapp:latest
     networks:
       crypto-network:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring-network
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    networks:
+      - monitoring-network
 volumes:
   postgres_data:
   cassandra_data:
 networks:
   airflow-network:
   crypto-network:
+  monitoring-network:

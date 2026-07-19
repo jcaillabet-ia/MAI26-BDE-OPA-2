@@ -10,5 +10,6 @@ coingecko-sdk==3.0.0
 pandas
 dotenv
 joblib==1.5.3
+prometheus-fastapi-instrumentator
 pytest
 matplotlib
