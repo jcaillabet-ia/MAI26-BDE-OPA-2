@@ -15,7 +15,6 @@ def toggle_coin():
         else:
             httpx.patch(url + coin['id'] + '/enable')
 
-
 st.title("Crypto-bot dashboard")
 table_data = []
 for coin in coins:
@@ -23,18 +22,23 @@ for coin in coins:
         'id': coin['id'],
         'symbol': coin['symbol'],
         "Action": "Désactiver" if coin['enabled'] else "Activer",
-        "Score": coin['score']
+        "Score": coin['score'],
+        "Consulter": f"http://localhost:8501/coin?id={coin['id']}" if coin['enabled'] else ""
     })
 
 st.dataframe(table_data, 
     column_config={
-    "Action": st.column_config.ButtonColumn(
-        "Action",
-        type="primary",
-        on_click=toggle_coin,
-        key="btn_toggle" ,
+        "Action": st.column_config.ButtonColumn(
+            "Action",
+            type="primary",
+            on_click=toggle_coin,
+            key="btn_toggle" ,
+        ),
+        "Consulter": st.column_config.LinkColumn(
+            "Consulter",
+            display_text="Consulter"
         )
-    }, 
+    },
     hide_index=True, 
     use_container_width=True
 )
