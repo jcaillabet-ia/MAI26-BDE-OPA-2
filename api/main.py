@@ -16,14 +16,11 @@ async def lifespan(app: FastAPI):
     keyspace = "crypto_bot"
     cluster = Cluster(CLUSTER_IPS, compression=True)
     session = cluster.connect(keyspace=keyspace)
-
     app.state.cassandra_session = session
-
     yield
-
     cluster.shutdown()
 
-app = FastAPI(title="FastAPI PostgreSQL Bridge", lifespan=lifespan)
+app = FastAPI(title="API FastAPI du projet crypto-bot", lifespan=lifespan)
 Instrumentator().instrument(app).expose(app)
 
 app.add_middleware(
