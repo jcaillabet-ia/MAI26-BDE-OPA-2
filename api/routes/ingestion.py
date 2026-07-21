@@ -1,3 +1,4 @@
+
 from fastapi import APIRouter, HTTPException, Body
 import httpx
 from pydantic import BaseModel
@@ -35,13 +36,17 @@ def run_ingestion(payload: IngestionPayload):
             output_path=output_path
         )
 
-        httpx.post("http://airflow-webserver:8080/api/v1/dags/cryptobot_load_candles/dagRuns", 
-            json={"conf":{"path": output_path}},
-            auth=("airflow", "airflow"))
-
         return result
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
 
     except Exception as error:
         raise HTTPException(status_code=500, detail=str(error))
+
+@router.get("/stream/{coin_id}")
+async def stream_candle(coin_id: str):
+    """
+    Retourne la bougie la plus recente disponible chez ccxt ( en passant par les websockets )
+    """
+
+    return await ingestion_service.query_candle(coin_id)
