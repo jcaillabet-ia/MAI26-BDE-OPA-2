@@ -11,9 +11,19 @@ clients:
 scrape_configs:
   - job_name: docker-containers
     docker_sd_configs:
-      - host: unix:///var/run/docker.sock # On interroge directement l'API Docker
+      - host: unix:///var/run/docker.sock # Commun à tous les OS
         refresh_interval: 5s
+    
     relabel_configs:
-      - source_labels: [__meta_docker_container_name]
-        regex: '/(.*)'
-        target_label: container # On extrait le vrai nom (ex: fastapi, postgres) ici
+      # 1. On récupère le nom du service défini dans le docker-compose.yml
+      - source_labels: [__meta_docker_container_label_com_docker_compose_service]
+        target_label: service_name
+
+      # 2. Sécurité : Si le conteneur n'a pas été lancé par Compose, on prend son nom Docker brut
+      - source_labels: [service_name, __meta_docker_container_name]
+        regex: ';/(.*)'
+        target_label: service_name
+
+      # 3. On récupère aussi le nom du projet Compose (le dossier) pour filtrer si besoin
+      - source_labels: [__meta_docker_container_label_com_docker_compose_project]
+        target_label: project_name

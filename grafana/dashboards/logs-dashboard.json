@@ -21,7 +21,7 @@
             "title": "Logs - Service FastAPI",
             "gridPos": {
                 "h": 8,
-                "w": 24,
+                "w": 12,
                 "x": 0,
                 "y": 0
             },
@@ -32,7 +32,7 @@
                         "type": "loki",
                         "uid": "Loki"
                     },
-                    "expr": "{container=~\".*api.*\"}",
+                    "expr": "{service_name=~\".*api.*\"}",
                     "queryType": "range"
                 }
             ],
@@ -49,7 +49,35 @@
             "title": "Logs - Service PostgreSQL",
             "gridPos": {
                 "h": 8,
-                "w": 24,
+                "w": 12,
+                "x": 12,
+                "y": 0
+            },
+            "targets": [
+                {
+                    "refId": "A",
+                    "datasource": {
+                        "type": "loki",
+                        "uid": "Loki"
+                    },
+                    "expr": "{service_name=~\".*postgres.*\"}",
+                    "queryType": "range"
+                }
+            ],
+            "options": {
+                "showLabels": false,
+                "wrapLogMessage": true,
+                "enableLogDetails": true,
+                "sortOrder": "Descending"
+            }
+        },
+        {
+            "id": 3,
+            "type": "logs",
+            "title": "Logs - Service Airflow",
+            "gridPos": {
+                "h": 8,
+                "w": 12,
                 "x": 0,
                 "y": 8
             },
@@ -60,7 +88,35 @@
                         "type": "loki",
                         "uid": "Loki"
                     },
-                    "expr": "{container=~\".*postgres.*\"}",
+                    "expr": "{service_name=~\".*airflow-worker.*\"}",
+                    "queryType": "range"
+                }
+            ],
+            "options": {
+                "showLabels": false,
+                "wrapLogMessage": true,
+                "enableLogDetails": true,
+                "sortOrder": "Descending"
+            }
+        },
+        {
+            "id": 4,
+            "type": "logs",
+            "title": "Logs - Service Cassandra",
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 8
+            },
+            "targets": [
+                {
+                    "refId": "A",
+                    "datasource": {
+                        "type": "loki",
+                        "uid": "Loki"
+                    },
+                    "expr": "{service_name=~\".*cassandra.*\"}",
                     "queryType": "range"
                 }
             ],
