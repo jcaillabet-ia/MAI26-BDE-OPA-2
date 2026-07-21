@@ -19,7 +19,15 @@ def list(id: str, session: Session = Depends(get_cassandra)):
 def save(id: str, payload: CandleInput, session: Session = Depends(get_cassandra)):
     return save_cassandra_candles(id, payload.candles, session)
 
-@router.get("/{id}/last_date")
-def last_date(id: str, session: Session = Depends(get_cassandra)):
-    last_candle = load_candles_cassandra(id, session, 1)
-    return last_candle[0][0]
+@router.get("/{coin_id}/interval")
+def last_date(coin_id: str, session: Session = Depends(get_cassandra)):
+    """
+    Récupère l'interval ( premmier date et dernière date ) de la monnaie dont l'id est passé en paramètre.
+    """
+
+    candles = load_candles_cassandra(coin_id, session, -1)
+
+    if not candles:
+        return {"first" : None, "last" : None}
+
+    return {"first" : candles[-1][0], "last" : candles[0][0]}

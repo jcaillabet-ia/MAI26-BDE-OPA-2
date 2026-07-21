@@ -3,6 +3,8 @@ from airflow.utils.dates import days_ago
 from datetime import datetime
 import httpx
 
+from common.tasks import main_pipeline
+
 @task.branch
 def action_branching(**context):
     params = context['dag_run'].conf
@@ -18,19 +20,22 @@ def enable_coin(**context):
     params = context['dag_run'].conf
     coin_id = params.get('coin_id')
 
-    coin = httpx.get(f"http://api:8000/coin/{coin_id}").json()
-    symbol = coin['symbol'].split('/')[0]
-    try:
-        r = httpx.post("http://api:8000/ingestion/run", 
-            json={
-                "coin_id": coin_id,
-                "timeframe": "1h",
-                "n_points": 50000
-            },
-            timeout=0.5
-        )
-    except httpx.TimeoutException:
-        pass
+    return [coin_id]
+
+    # coin = httpx.get(f"http://api:8000/coin/{coin_id}").json()
+    # symbol = coin['symbol'].split('/')[0]
+    # print(symbol)
+    # try:
+    #     r = httpx.post("http://api:8000/ingestion/run", 
+    #         json={
+    #             "coin_id": symbol,
+    #             "timeframe": "1h",
+    #             "n_points": 50000
+    #         },
+    #         timeout=0.5
+    #     )
+    # except httpx.TimeoutException:
+    #     pass
 
 @task
 def disable_coin():
@@ -43,10 +48,15 @@ def disable_coin():
     start_date=datetime(2026, 1, 1),
     catchup=False
 )
+
 def coin_toggle_dag():
+    t1 = action_branching()
+    
     t2 = enable_coin()
     t3 = disable_coin()
 
-    action_branching() >> [t2, t3]
+    t1 >> [t2, t3]
+
+    t4 = main_pipeline(t2)
 
 coin_toggle_dag = coin_toggle_dag()

@@ -31,12 +31,14 @@ def train(coin_id : str = Body(..., embed=True), session: CassandraSession = Dep
     ml.predict(ml.X_test)
     score = ml.score()
 
+    chemin_fichier = Path("/app/data/models/" + coin_id + ".pkl")
+
     with Session(engine) as session:
         statement = select(Coin).where(Coin.id == coin_id)
         coin = session.exec(statement).first()
 
         if score >= coin.score or coin.score == 0:
-            chemin_fichier = Path("/app/data/models/" + coin_id + ".pkl")
+            
             chemin_fichier.parent.mkdir(parents=True, exist_ok=True)
 
             coin.score = score

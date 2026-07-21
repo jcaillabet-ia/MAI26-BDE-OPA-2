@@ -97,14 +97,19 @@ def load_candles_cassandra(crypto_id,  session: Session, limit = 50000):
         ORDER BY timestamp DESC
         LIMIT ?
     """
+
     prepared = session.prepare(query)
     prepared.fetch_size = 10000
 
     points_per_partition = 365 * 24
-    nb_year = 1 + limit // points_per_partition
+    
+    first_year = 2009
+    current_year = datetime.now(timezone.utc).year
+    nb_year = current_year - first_year + 1 # 1 + limit // points_per_partition
 
     futures = []
     limit_per_partition = 366 * 24
+    
     for i in range(nb_year):
         target_bucket = (datetime.combine(bucket_date, datetime.min.time()) - relativedelta(years=i)).date()
         future = session.execute_async(prepared, (crypto_id, target_bucket, limit_per_partition))
@@ -114,7 +119,8 @@ def load_candles_cassandra(crypto_id,  session: Session, limit = 50000):
     for future in futures:
         all_candles.extend(future.result())
 
-    return all_candles[:limit]
+    return all_candles if limit == -1 else all_candles[:limit]
+
 
 def save_postgres_candles(crypto_id, candles):
     conn = open_postgres_connection()
