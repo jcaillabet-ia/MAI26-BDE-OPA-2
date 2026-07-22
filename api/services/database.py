@@ -1,3 +1,4 @@
+from requests import session
 from datetime import datetime, timezone
 from dateutil.relativedelta import relativedelta
 
@@ -121,22 +122,48 @@ def load_candles_cassandra(crypto_id,  session: Session, limit = 50000):
 
     return all_candles if limit == -1 else all_candles[:limit]
 
+def remove_cassandra_candles(coin_id, session: Session):
+    # session.row_factory = tuple_factory
 
-def save_postgres_candles(crypto_id, candles):
-    conn = open_postgres_connection()
-    cursor = conn.cursor()
+    current_date = datetime.now(timezone.utc)
+    bucket_date = current_date.replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0).date()
+    
+    query = """
+        DELETE FROM candles 
+        WHERE crypto_id = ? AND bucket_date = ?
+    """
 
-    for candle in candles:
-        date = datetime.fromtimestamp(candle['timestamp'] / 1000.0, tz=timezone.utc)
-        bucket_date = date.replace(day=1, hour=0, minute=0, second=0, microsecond=0).date()
+    prepared = session.prepare(query)
 
-        cursor.execute("INSERT INTO public.candles (crypto_id, bucket_date, timestamp, open, high, low, close, volume) VALUES (%s, %s, to_timestamp(%s / 1000.0), %s, %s, %s, %s, %s)", (crypto_id, bucket_date, candle['timestamp'], float(candle['open']), float(candle['high']), float(candle['low']), float(candle['close']), float(candle['volume'])))
-    conn.commit()
+    first_year = 2009
+    current_year = datetime.now(timezone.utc).year
+    nb_year = current_year - first_year + 1
 
-def load_candles_postgres(crypto_id, limit = 50000):
-    conn = open_postgres_connection()
-    cursor = conn.cursor()
+    futures = []
+    
+    for i in range(nb_year):
+        target_bucket = (datetime.combine(bucket_date, datetime.min.time()) - relativedelta(years=i)).date()
+        future = session.execute_async(prepared, (coin_id, target_bucket))
+        futures.append(future)
 
-    cursor.execute("SELECT timestamp, open, high, low, close, volume FROM public.candles WHERE crypto_id = %s ORDER BY timestamp DESC LIMIT %s", (crypto_id, limit))
-    return cursor.fetchall()
+    for future in futures:
+        future.result()
+
+# def save_postgres_candles(crypto_id, candles):
+#     conn = open_postgres_connection()
+#     cursor = conn.cursor()
+
+#     for candle in candles:
+#         date = datetime.fromtimestamp(candle['timestamp'] / 1000.0, tz=timezone.utc)
+#         bucket_date = date.replace(day=1, hour=0, minute=0, second=0, microsecond=0).date()
+
+#         cursor.execute("INSERT INTO public.candles (crypto_id, bucket_date, timestamp, open, high, low, close, volume) VALUES (%s, %s, to_timestamp(%s / 1000.0), %s, %s, %s, %s, %s)", (crypto_id, bucket_date, candle['timestamp'], float(candle['open']), float(candle['high']), float(candle['low']), float(candle['close']), float(candle['volume'])))
+#     conn.commit()
+
+# def load_candles_postgres(crypto_id, limit = 50000):
+#     conn = open_postgres_connection()
+#     cursor = conn.cursor()
+
+#     cursor.execute("SELECT timestamp, open, high, low, close, volume FROM public.candles WHERE crypto_id = %s ORDER BY timestamp DESC LIMIT %s", (crypto_id, limit))
+#     return cursor.fetchall()
     

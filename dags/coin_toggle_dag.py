@@ -2,6 +2,7 @@ from airflow.decorators import dag, task
 from airflow.utils.dates import days_ago
 from datetime import datetime
 import httpx
+import os
 
 from common.tasks import main_pipeline
 
@@ -22,24 +23,32 @@ def enable_coin(**context):
 
     return [coin_id]
 
-    # coin = httpx.get(f"http://api:8000/coin/{coin_id}").json()
-    # symbol = coin['symbol'].split('/')[0]
-    # print(symbol)
-    # try:
-    #     r = httpx.post("http://api:8000/ingestion/run", 
-    #         json={
-    #             "coin_id": symbol,
-    #             "timeframe": "1h",
-    #             "n_points": 50000
-    #         },
-    #         timeout=0.5
-    #     )
-    # except httpx.TimeoutException:
-    #     pass
+@task
+def disable_coin(**context):
+    params = context['dag_run'].conf
+    coin_id = params.get('coin_id')
+
+    return coin_id
 
 @task
-def disable_coin():
-    pass
+def remove_candles(coin_id: str):
+    httpx.post(f"http://api:8000/candle/{coin_id}/delete")
+
+    return coin_id
+
+@task
+def clear_files(coin_id: str):
+    output_path = f"/app/data/candles/{coin_id}.json"
+    print(output_path)
+    if os.path.exists(output_path):
+        print("delete candles")
+        os.remove(output_path)
+
+    output_path = f"/app/data/models/{coin_id}.pkl"
+    print(output_path)
+    if os.path.exists(output_path):
+        print("delete model")
+        os.remove(output_path)
 
 @dag(
     dag_id='cryptobot_coin_toggle',
@@ -51,12 +60,15 @@ def disable_coin():
 
 def coin_toggle_dag():
     t1 = action_branching()
-    
+
     t2 = enable_coin()
     t3 = disable_coin()
 
     t1 >> [t2, t3]
 
     t4 = main_pipeline(t2)
+
+    t5 = remove_candles(t3)
+    t6 = clear_files(t5)
 
 coin_toggle_dag = coin_toggle_dag()

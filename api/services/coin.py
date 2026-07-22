@@ -48,6 +48,7 @@ def disable_coin(coin_id: str) -> Coin:
     with Session(engine) as session:
         statement = select(Coin).where(Coin.id == coin_id)
         coin = session.exec(statement).first()
+        coin.score = -1
         coin.enabled = False
         coin.save(session)
         return coin

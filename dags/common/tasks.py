@@ -111,10 +111,10 @@ def main_pipeline(coin_id_list: List[str]):
     t3 = get_interval.expand(coin_id=t2)
 
     t4 = past_ingestion.expand(coin_data=t3)
-    t5 = present_ingestion.expand(coin_data=t3)
+    present_ingestion.expand(coin_data=t3)
 
     t6 = read_file.expand(output_path=t4)
     
     t7 = load_data.expand(coin_data=t6)
     
-    t8 = train_model.expand(coin_id=t7)
+    train_model.expand(coin_id=t7)

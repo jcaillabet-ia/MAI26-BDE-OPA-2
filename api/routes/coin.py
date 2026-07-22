@@ -37,4 +37,9 @@ def enable(id: str):
 @router.patch("/{id}/disable", status_code=status.HTTP_204_NO_CONTENT)
 def disable(id: str):
     disable_coin(id)
-    
+    httpx.post("http://airflow-webserver:8080/api/v1/dags/cryptobot_coin_toggle/dagRuns", 
+        json={"conf":{
+                "command": "disable", 
+                "coin_id": id}
+            },
+        auth=("airflow", "airflow"))
