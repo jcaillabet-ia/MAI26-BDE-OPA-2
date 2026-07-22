@@ -1,6 +1,8 @@
+import cassandra
 from cassandra.cluster import Session
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
+from sqlalchemy.ext.asyncio import session
 from typing import List, Any
 
 from dependencies import get_cassandra
@@ -13,10 +15,21 @@ class CandleInput(BaseModel):
 
 @router.get("/{id}/list")
 def list(id: str, session: Session = Depends(get_cassandra)):
-    return load_candles_cassandra(id, session)
+    """
+    Récupère la liste des bougies pour une cryptomonnaie donnée
+    """
+
+    try:
+        candles = load_candles_cassandra(id, session)
+        return candles
+    except cassandra.InvalidRequest:
+        raise HTTPException(status_code=500, detail="La base de données Cassandra n'a pas été initialisée.")
 
 @router.post("/{id}/save")
 def save(id: str, payload: CandleInput, session: Session = Depends(get_cassandra)):
+    """
+    Sauvegarde les bougies pour une cryptomonnaie donnée
+    """
     return save_cassandra_candles(id, payload.candles, session)
 
 @router.get("/{coin_id}/interval")

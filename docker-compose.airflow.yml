@@ -25,8 +25,10 @@ x-airflow-common: &airflow-common
   depends_on:
     redis:
       condition: service_healthy
-    postgres:
+    postgres_airflow:
       condition: service_healthy
+  networks:
+    - airflow-network
 
 services:
   postgres_airflow:
@@ -71,8 +73,6 @@ services:
       timeout: 10s
       retries: 5
     restart: always
-    networks:
-      - airflow-network
 
   airflow-scheduler:
     <<: *airflow-common
@@ -83,8 +83,6 @@ services:
       timeout: 10s
       retries: 5
     restart: always
-    networks:
-      - airflow-network
 
   airflow-worker:
     <<: *airflow-common
@@ -97,8 +95,6 @@ services:
       timeout: 10s
       retries: 5
     restart: always
-    networks:
-      - airflow-network
 
   airflow-init:
     <<: *airflow-common
@@ -121,8 +117,6 @@ services:
       timeout: 10s
       retries: 5
     restart: always
-    networks:
-      - airflow-network
 
 volumes:
   postgres-db-volume:

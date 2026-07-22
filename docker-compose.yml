@@ -68,7 +68,7 @@ services:
       api:
         condition: service_healthy
     entrypoint: >
-      sh -c " pip install httpx && pip install pytest && pytest -v "
+      sh -c " pip install httpx && pip install pytest && pytest -v -s"
     networks:
       crypto-network:
   streamlit:
@@ -124,6 +124,18 @@ services:
       - monitoring-network
     depends_on:
       - loki
+  adminer:
+    image: adminer:latest
+    container_name: projet_test_adminer
+    restart: always
+    ports:
+      - "8082:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - crypto-network
+
 volumes:
   postgres_data:
   cassandra_data:

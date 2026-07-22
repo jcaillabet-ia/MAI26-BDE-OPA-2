@@ -1,5 +1,7 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, status, HTTPException
 import httpx
+from psycopg2 import errors
+from sqlalchemy.exc import ProgrammingError
 
 from services.coin import list_coins, enable_coin, disable_coin, get_coin
 
@@ -7,7 +9,15 @@ router = APIRouter()
 
 @router.get("/")
 def list():
-    return list_coins()
+    """
+    Liste les cryptomonnaies qu'il est possible de gérer
+    """
+
+    try:
+        list = list_coins()
+        return list
+    except ProgrammingError as e:
+        raise HTTPException(status_code=500, detail="La base de données PostgreSQL n'a pas été initialisée.")
 
 @router.get("/{id}")
 def item(id: str):
