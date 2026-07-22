@@ -4,6 +4,24 @@ from sqlalchemy.sql import func, desc
 from .database import engine
 from models.Coin import Coin
 
+def insert_coins(catalog: list):
+    coins = list_coins()
+
+    with Session(engine) as session:
+        for entry in catalog:
+            existing_coin = list(filter(lambda x: x['id'] == entry['id'], coins))
+            if not existing_coin:
+                coin = Coin(
+                    id=entry['id'],
+                    name=entry['name'],
+                    base_asset=entry['base'],
+                    quote_asset=entry['quote'],
+                    symbol=entry['symbol'],
+                    market_cap=entry['market_cap'],
+                    exchange=entry['exchange']
+                )
+                coin.save(session)
+
 def get_coin(coin_id: str) -> Coin:
     with Session(engine) as session:
         statement = select(Coin).where(Coin.id == coin_id)
