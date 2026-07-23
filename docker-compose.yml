@@ -17,8 +17,6 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
       - PYTHONPATH=/app:/app/src
     depends_on:
-      cassandra:
-        condition: service_healthy
       cassandra-init:
         condition: service_completed_successfully
       postgres:
@@ -79,6 +77,9 @@ services:
     ports:
       - 8501:8501
     image: yourstreamlitapp:latest
+    depends_on:
+      api:
+        condition: service_healthy
     networks:
       crypto-network:
   prometheus:
@@ -90,6 +91,9 @@ services:
       - "9090:9090"
     networks:
       - monitoring-network
+    depends_on:
+      api:
+        condition: service_healthy
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
