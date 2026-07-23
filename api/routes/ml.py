@@ -1,7 +1,7 @@
 from cassandra.cluster import Session as CassandraSession
 import ccxt
 import ccxt.pro as ccxtpro
-from fastapi import APIRouter, Depends, status, Body
+from fastapi import APIRouter, Depends, status, Body, HTTPException
 import joblib
 from pathlib import Path
 import numpy as np
@@ -18,15 +18,36 @@ from src.MachineLearningClassification import MachineLearningClassification
 
 router = APIRouter()
 
+@router.get("/transform/{coin_id}")
+def transform(coin_id : str, session: CassandraSession = Depends(get_cassandra)):
+    candles = load_candles_cassandra(coin_id, session)
+
+    ml = MachineLearningClassification()
+
+    return ml.transform(candles)
+
 @router.post("/train", status_code=status.HTTP_204_NO_CONTENT)
-def train(coin_id : str = Body(..., embed=True), session: CassandraSession = Depends(get_cassandra)):
-    raw_candles = load_candles_cassandra(coin_id, session)
+def train(coin_data: dict = Body(...), session: CassandraSession = Depends(get_cassandra)):
+    # raw_candles = load_candles_cassandra(coin_data, session)
 
-    ml = MachineLearningClassification(raw_candles)
+    # print(coin_data)
 
-    ml.clean()
-    ml.setup()
+    coin_id = coin_data['coin_id']
+    data = coin_data['data']
+    target_indice = coin_data['target_indice']
+
+    # print(data)
+
+    ml = MachineLearningClassification()
+
+    # ml.clean()
+    # ml.setup()
+
+    #try:
+    ml.setup(data, target_indice)
     ml.train()
+    # except ValueError as error:
+    #     raise HTTPException(status_code=500, detail=str(error))
 
     ml.predict(ml.X_test)
     score = ml.score()
@@ -60,8 +81,14 @@ async def predict(coin_id: str = Body(..., embed=True)):
 
     last_candle = []
     try:
-        last_candle = await exchangepro.watch_ohlcv(coin['symbol'], timeframe)
+        last_candle = await exchangepro.watch_ohlcv(coin['symbol'], timeframe) #
         last_candle = last_candle[0]
+    except Exception as e:
+        last_candle = exchange.fetch_ohlcv(
+            symbol=coin['symbol'],
+            timeframe='1h',
+            limit=1,
+        )[0]
     finally:
         await exchangepro.close()
 
@@ -70,36 +97,25 @@ async def predict(coin_id: str = Body(..., embed=True)):
                 symbol=coin['symbol'],
                 timeframe='1h',
                 since=since,
-                limit=10,
+                limit=11,
             )
     candles.append(last_candle)
 
-    df = pd.DataFrame(candles, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+    ml = MachineLearningClassification()
 
-    candle = df.iloc[-1]
-    for i in range(1, 9):
-        df['close_m-{}'.format(i)] = df['close'].shift(i)
-    df = df.dropna()
-    candle = df.iloc[-1].tolist()
+    transform = ml.transform(candles)
 
-    query = np.array([
-        candle[0],
-        candle[1],
-        candle[2],
-        candle[3],
-        candle[4],
-        candle[5],
-        candle[6],
-        candle[7],
-        candle[8],
-        candle[9],
-        candle[10],
-        candle[11],
-        candle[12],
-        candle[13],
-    ])
-    query = query.reshape(1, -1)
+    target_indice = transform['target_indice']
+    data = transform['data']
+    
+    df = pd.DataFrame(data)
+    features = df.drop(columns=[target_indice])
+    candle = features.values.tolist()[-1]
+    print(candle)
+
+    query = np.array([candle[:15]])
 
     ml = joblib.load(f"/app/data/models/{coin_id}.pkl")
+
     return ml.predict(query)[0].item()
     

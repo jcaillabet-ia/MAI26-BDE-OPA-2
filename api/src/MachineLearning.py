@@ -14,41 +14,59 @@ class MachineLearning(ABC):
     model = None
 
     def __init__(self, candles):
-        self.candles = pd.DataFrame(candles, columns= ['timestamp', 'open', 'high', 'low', 'close', 'volume'])
-        self.candles['timestamp'] = (self.candles['timestamp'].astype('int64') // 10**6)
-
-        self.add_features()
-        self.candles = self.candles.dropna()
-    
-    def clean(self):
-        self.candles = self.candles.drop_duplicates(subset=['timestamp']).reset_index(drop=True)
-        self.candles = self.candles.sort_values(by='timestamp', ascending=True)
-
-        self.target = self.build_target()
-        self.features = self.build_features()
-
+        ##self.candles = pd.DataFrame(candles, columns= ['timestamp', 'open', 'high', 'low', 'close', 'volume'])
         
+        #self.candles['timestamp'] = (self.candles['timestamp'].astype('int64') // 10**6)
+        #self.add_features()
+        #self.candles = self.candles.dropna()
+        pass
     
+    def transform(self, candles):
+        df = pd.DataFrame(candles, columns= ['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+        df = self.add_features(df)
+        df = self.clean(df)
+
+        df_res = df[['timestamp', 'open', 'high', 'low', 'close', 'volume', 'target_bin']]
+        df_res['timestamp'] = (df_res['timestamp'].astype('int64') // 10**6)
+
+        for i in range(1, 10):
+            df_res['close_m-{}'.format(i)] = df['close'].shift(i)
+        df_res = df_res.dropna()
+
+        target_indice = df_res.columns.get_loc('target_bin')
+
+        return {"target_indice": target_indice, "data": df_res.to_numpy().tolist()}
+
+    def clean(self, df):
+        df = df.drop_duplicates(subset=['timestamp']).reset_index(drop=True)
+        df = df.sort_values(by='timestamp', ascending=True)
+
+        # df = self.build_target(df)
+        # df = self.build_features(df)
+
+        return df
+
     @abstractmethod
-    def build_target(self):
+    def build_target(self, df):
         pass
 
     @abstractmethod
-    def build_features(self):
+    def build_features(self, df):
         pass
 
     @abstractmethod
-    def add_features(self):
+    def add_features(self, df):
         pass
 
-    def setup(self):
+    def setup(self, data, target_indice):
+        df = pd.DataFrame(data)
         
-        taille_min = min(len(self.features), len(self.target))
+        taille_min = min(len(df.drop(columns=[target_indice])), len(df.iloc[:, target_indice]))
 
-        self.features = self.features.iloc[:taille_min]
-        self.target = self.target.iloc[:taille_min]
+        features = df.drop(columns=[target_indice]).iloc[:taille_min]
+        target = df.iloc[:, target_indice].iloc[:taille_min]
 
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.features, self.target, test_size = 0.25, random_state=42, shuffle=False)
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(features, target, test_size = 0.25, random_state=42, shuffle=False)
     
     def train(self):
         self.model.fit(self.X_train, self.y_train)
