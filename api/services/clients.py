@@ -37,7 +37,6 @@ def build_dict(length=250):
     exchanges = exchanges[2:]
 
     load_dotenv(override=True)
-    base_url = "https://api.coingecko.com/api/v3"
     COINGECKO_API_KEY = os.environ.get("COINGECKO_API_KEY")
 
     client = Coingecko(

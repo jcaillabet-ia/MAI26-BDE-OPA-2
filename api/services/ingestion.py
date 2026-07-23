@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import ccxt.pro as ccxtpro
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -9,6 +10,8 @@ from typing import Any
 import pandas as pd
 
 from services.clients import build_dict
+from services.coin import list_coins
+
 from ingestion.ccxt_ohlcv_client import (
     CcxtOHLCVClient,
     OHLCVIngestionError,
@@ -17,7 +20,6 @@ from ingestion.exchange_resolver import (
     MarketResolverError,
     ResolvedMarket,
 )
-
 
 DEFAULT_EXCHANGE_PRIORITY = ["binance", "coinbase", "kraken"]
 DEFAULT_QUOTE_PRIORITY = ["USDT", "USD", "USDC"]
@@ -189,6 +191,7 @@ def run_ingestion(
     """
     Lance une ingestion complète et retourne un résumé exploitable par l'API.
     """
+
     df = fetch_asset_ohlcv(
         asset=asset,
         timeframe=timeframe,
@@ -211,6 +214,21 @@ def run_ingestion(
         "output_path": str(output_path) if output_path is not None else None,
     }
 
+async def query_candle(coin_id: str):
+
+    timeframe = '1h'
+
+    coins = list_coins()
+    coin = list(filter(lambda x: x['id'] == coin_id, coins))[0]
+
+    exchange_name = coin['exchange']
+    exchangepro = getattr(ccxtpro, exchange_name)()
+
+    try:
+        last_candle = await exchangepro.watch_ohlcv(coin['symbol'], timeframe)
+        return last_candle[0]
+    finally:
+        await exchangepro.close()
 
 def main() -> None:
     parser = argparse.ArgumentParser(

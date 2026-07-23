@@ -1,3 +1,6 @@
+include:
+  - docker-compose.airflow.yml
+  - docker-compose.cassandra.yml
 services:
   api:
     build:
@@ -14,51 +17,21 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
       - PYTHONPATH=/app:/app/src
     depends_on:
-      cassandra:
-        condition: service_healthy
       cassandra-init:
         condition: service_completed_successfully
       postgres:
         condition: service_healthy
     networks:
-      - crypto-network
+      airflow-network: {}
+      crypto-network: {}
+      monitoring-network:
+        aliases:
+          - api-monitoring
     healthcheck:
       test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/docs')" ]
       interval: 10s
       timeout: 5s
       retries: 6
-  cassandra:
-    image: cassandra:4
-    container_name: cassandra
-    restart: always
-    environment:
-      - MAX_HEAP_SIZE=1G
-      - HEAP_NEWSIZE=256M
-      - CASSANDRA_RPC_ADDRESS=0.0.0.0
-      - CASSANDRA_BROADCAST_RPC_ADDRESS=cassandra
-    ports:
-      - "9042:9042"
-    volumes:
-      - cassandra_data:/var/lib/cassandra
-    healthcheck:
-      test: [ "CMD-SHELL", "nodetool status | grep -q 'UN'" ]
-      interval: 15s
-      timeout: 5s
-      retries: 10
-    networks:
-      - crypto-network
-  cassandra-init:
-    image: cassandra:latest
-    container_name: cassandra-init
-    depends_on:
-      cassandra:
-        condition: service_healthy
-    volumes:
-      - ./api/scripts/schema_cassandra.cql:/init.cql
-    entrypoint: >
-      bash -c "echo 'Cassandra prête, initialisation du schéma...'; cqlsh cassandra 9042 -f /init.cql && echo 'Schéma initialisé avec succès.'"
-    networks:
-      - crypto-network
   postgres:
     image: postgres:15-alpine
     restart: always
@@ -79,17 +52,6 @@ services:
       retries: 5
     networks:
       - crypto-network
-  adminer:
-    image: adminer:latest
-    container_name: projet_test_adminer
-    restart: always
-    ports:
-      - "8082:8080"
-    depends_on:
-      postgres:
-        condition: service_healthy
-    networks:
-      - crypto-network
   tests:
     image: python:3.11-slim
     container_name: tests
@@ -104,11 +66,84 @@ services:
       api:
         condition: service_healthy
     entrypoint: >
-      sh -c " pip install httpx && pip install pytest && pytest -v "
+      sh -c " pip install httpx && pip install pytest && pytest -v -s"
     networks:
       crypto-network:
+  streamlit:
+    build: ./streamlit
+    command: streamlit run streamlit/main.py --server.port 8501
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 8501:8501
+    image: yourstreamlitapp:latest
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      crypto-network:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring-network
+    depends_on:
+      api:
+        condition: service_healthy
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    logging:
+      driver: "none"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    networks:
+      - monitoring-network
+  loki:
+    image: grafana/loki:3.0.0
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    logging:
+      driver: "none"
+    networks:
+      - monitoring-network
+
+  promtail:
+    image: grafana/promtail:3.0.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./promtail/config.yaml:/etc/promtail/config.yaml
+    command: -config.file=/etc/promtail/config.yaml
+    networks:
+      - monitoring-network
+    depends_on:
+      - loki
+  adminer:
+    image: adminer:latest
+    container_name: projet_test_adminer
+    restart: always
+    ports:
+      - "8082:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - crypto-network
+
 volumes:
   postgres_data:
   cassandra_data:
 networks:
+  airflow-network:
   crypto-network:
+  monitoring-network:

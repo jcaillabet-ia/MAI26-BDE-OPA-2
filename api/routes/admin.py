@@ -4,6 +4,7 @@ from sqlmodel import Session
 
 from models.Coin import Coin
 from services.clients import build_dict
+from services.coin import insert_coins
 import services.database as db
 from dependencies import get_cassandra
 
@@ -19,19 +20,12 @@ def empty_cassandra(session: CassandraSession = Depends(get_cassandra)):
 
 @router.post("/postgres/fill", status_code=status.HTTP_204_NO_CONTENT)
 def fill_postgres():
-    with Session(db.engine) as session:
-        entries = build_dict()
-        for entry in entries:
-            coin = Coin(
-                id=entry['id'],
-                name=entry['name'],
-                base_asset=entry['base'],
-                quote_asset=entry['quote'],
-                symbol=entry['symbol'],
-                market_cap=entry['market_cap'],
-                exchange=entry['exchange']
-            )
-            coin.save(session)
+    """
+    Recupère la liste des monnaies gérables, et les insère dans la base de données PostgreSQL
+    """
+
+    entries = build_dict()
+    insert_coins(entries)
 
 # @router.post("/postgres/clear")
 # def clear_postgres():

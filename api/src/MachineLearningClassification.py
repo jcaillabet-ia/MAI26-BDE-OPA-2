@@ -4,8 +4,8 @@ from sklearn.metrics import precision_score
 from .MachineLearning import MachineLearning
 
 class MachineLearningClassification(MachineLearning):
-    def __init__(self, candles):
-        super().__init__(candles)
+    def __init__(self):
+        #super().__init__()
 
         self.model = RandomForestClassifier(
             n_estimators=200,
@@ -23,17 +23,19 @@ class MachineLearningClassification(MachineLearning):
 
         return df_temp
 
-    def add_features(self):
-        self.candles['close_smoothed'] = self.candles['close'].rolling(window=1000, min_periods=1).mean()
-        self.candles['target'] = self.candles['close'].shift(-(24))
-        self.candles['target_pct'] = ((self.candles['close'].shift(-(24)) - self.candles['close']) / self.candles['close']) * 100
-        
-        self.candles['target_bin'] = (self.candles['close_smoothed'].shift(-(24)) > self.candles['close_smoothed']).astype(int)
+    def add_features(self, df):
+        df['close_smoothed'] = df['close'].rolling(window=1000, min_periods=1).mean()
+        df['target'] = df['close'].shift((24))
+        df['target_pct'] = ((df['close'].shift((24)) - df['close']) / df['close']) * 100
+
+        df['target_bin'] = (df['close_smoothed'].shift((24)) > df['close_smoothed']).astype(int)
 
         for i in range(1, 10):
-            self.candles['close_m-{}'.format(i)] = self.candles['close'].shift(i)
+            df['close_m-{}'.format(i)] = df['close'].shift(i)
 
-        self.candles.dropna()
+        df.dropna()
+
+        return df
         
     def score(self):
         return precision_score(self.y_test, self.y_predict)

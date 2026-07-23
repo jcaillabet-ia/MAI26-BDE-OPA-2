@@ -11,5 +11,5 @@ class Coin(Model, table=True):
     market_cap: int
     exchange: str
     enabled: bool = Field(default=False)
-    score: float = Field(default=0.0)
+    score: float = Field(default=-1)
     

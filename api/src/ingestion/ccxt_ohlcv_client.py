@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from typing import Any
+import time
 
 import ccxt
 import pandas as pd
@@ -85,6 +86,8 @@ class CcxtOHLCVClient:
                 f"Symbole indisponible sur {self.exchange_id}: {symbol}"
             )
 
+        time.sleep(0.5)
+
         try:
             return self.exchange.fetch_ohlcv(
                 symbol=symbol,
@@ -92,6 +95,8 @@ class CcxtOHLCVClient:
                 since=since,
                 limit=limit,
             )
+        except ccxt.RequestTimeout:
+            return None
         except Exception as exc:
             raise OHLCVIngestionError(
                 f"Erreur pendant fetch_ohlcv sur {self.exchange_id} / {symbol}"
