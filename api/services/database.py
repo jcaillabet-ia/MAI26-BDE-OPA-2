@@ -123,16 +123,10 @@ def load_candles_cassandra(crypto_id,  session: Session, limit = 50000):
     return all_candles if limit == -1 else all_candles[:limit]
 
 def remove_cassandra_candles(coin_id, session: Session):
-    # session.row_factory = tuple_factory
-
-    current_date = datetime.now(timezone.utc)
-    bucket_date = current_date.replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0).date()
-    
     query = """
         DELETE FROM candles 
         WHERE crypto_id = ? AND bucket_date = ?
     """
-
     prepared = session.prepare(query)
 
     first_year = 2009
@@ -140,7 +134,8 @@ def remove_cassandra_candles(coin_id, session: Session):
     nb_year = current_year - first_year + 1
 
     futures = []
-    
+    current_date = datetime.now(timezone.utc)
+    bucket_date = current_date.replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0).date()
     for i in range(nb_year):
         target_bucket = (datetime.combine(bucket_date, datetime.min.time()) - relativedelta(years=i)).date()
         future = session.execute_async(prepared, (coin_id, target_bucket))

@@ -8,7 +8,7 @@ from common.tasks import pull_catalog
 
 @task
 def request_candle(coin_id: str):
-    candle = httpx.get(f"http://api:8000/ingestion/stream{coin_id}").json()
+    candle = httpx.get(f"http://api:8000/ingestion/stream/{coin_id}").json()
     return {"coin_id":coin_id, "candle":candle}
 
 @task

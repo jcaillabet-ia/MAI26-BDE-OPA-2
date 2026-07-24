@@ -48,6 +48,6 @@ def last_date(coin_id: str, session: Session = Depends(get_cassandra)):
 @router.delete("/{id}/remove", status_code=status.HTTP_204_NO_CONTENT)
 def remove(id: str, session: Session = Depends(get_cassandra)):
     """
-    Sauvegarde les bougies pour une cryptomonnaie donnée
+    Supprime les bougies présentes en base pour une crypto-monnaie donnée
     """
     return remove_cassandra_candles(id, session)
