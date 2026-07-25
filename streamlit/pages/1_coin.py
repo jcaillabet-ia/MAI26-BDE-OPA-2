@@ -3,16 +3,28 @@ import httpx
 import pandas as pd
 import streamlit as st
 
+
+coin_id = st.query_params.get("id")
+
+if not coin_id:
+    st.title("Détail crypto")
+    st.warning("Aucune crypto sélectionnée. Retourne sur la page principale et clique sur « Consulter ».")
+    st.stop()
+
 async def fetch_prediction():
     url = f"http://api:8000/ml/predict"
-    st.write(st.query_params['id'])
+    st.write(coin_id)
     async with httpx.AsyncClient(timeout=60.0) as client:
-        response = await client.post(url, json={"coin_id": st.query_params['id']})
+        response = await client.post(url, json={"coin_id": coin_id})
         return response.json()
 
-url = f"http://api:8000/candle/{st.query_params['id']}/list"
+url = f"http://api:8000/candle/{coin_id}/list"
 response = httpx.get(url)
 candles = response.json()
+
+if not candles:
+    st.warning("Aucune candle disponible pour cette crypto. Lance l’ingestion avant de consulter le graphique.")
+    st.stop()
 
 df = pd.DataFrame(candles, columns= ['timestamp', 'open', 'high', 'low', 'close', 'volume'])
 df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
