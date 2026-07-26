@@ -32,7 +32,8 @@ def disable_coin(**context):
 
 @task
 def remove_candles(coin_id: str):
-    httpx.post(f"http://api:8000/candle/{coin_id}/delete")
+    response = httpx.delete(f"http://api:8000/candle/{coin_id}/remove")
+    response.raise_for_status()
 
     return coin_id
 

@@ -181,7 +181,10 @@ class CcxtOHLCVClient:
         all_rows: list[list[Any]] = []
         last_seen_timestamp: int | None = None
 
-        while len(all_rows) < n_points:
+        nb_pages = n_points // limit_per_request
+        nb_pages = max(1, nb_pages)
+
+        for i in range(nb_pages):
             remaining = n_points - len(all_rows)
             current_limit = min(remaining, limit_per_request)
 
@@ -192,12 +195,12 @@ class CcxtOHLCVClient:
                 limit=current_limit,
             )
 
-            if not page:
-                break
-
-            all_rows.extend(page)
-
-            new_last_timestamp = page[-1][0]
+            if page:
+                all_rows.extend(page)
+                new_last_timestamp = page[-1][0]
+            else:
+                current_since = current_since + limit_per_request * timeframe_ms
+                continue
 
             # Sécurité pour éviter une boucle infinie si l'exchange renvoie
             # toujours la même dernière bougie.
@@ -206,11 +209,6 @@ class CcxtOHLCVClient:
 
             last_seen_timestamp = new_last_timestamp
             current_since = new_last_timestamp + timeframe_ms
-
-            # Si l'exchange renvoie moins que demandé, il n'a probablement
-            # plus assez de données à fournir sur cette plage.
-            if len(page) < current_limit:
-                break
 
         # Déduplication par timestamp, puis tri chronologique.
         rows_by_timestamp = {row[0]: row for row in all_rows}
