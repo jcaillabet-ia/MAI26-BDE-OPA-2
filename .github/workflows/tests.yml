@@ -23,6 +23,10 @@ jobs:
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: docker compose run --rm tests
 
+      - name: Show API logs on failure
+        if: failure()
+        run: docker compose logs api
+
       - name: Teardown containers
         if: always()
         run: docker compose down -v
