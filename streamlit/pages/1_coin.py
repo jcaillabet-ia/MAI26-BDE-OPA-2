@@ -51,8 +51,39 @@ with st.spinner("Prédiction en cours..."):
     # asyncio.run() permet d'exécuter la fonction async dans le flux Streamlit
     try:
         resultat = asyncio.run(fetch_prediction())
-        st.success("Données récupérées avec succès !")
-        st.write(resultat)
+        prediction = int(resultat)
+
+        if prediction == 1:
+            label = "ACHAT"
+            background = "#166534"
+            border = "#22c55e"
+            text_color = "#dcfce7"
+        else:
+            label = "VENTE"
+            background = "#991b1b"
+            border = "#ef4444"
+            text_color = "#fee2e2"
+
+        st.markdown(
+            f"""
+            <div style="
+                display: inline-block;
+                padding: 14px 40px;
+                margin-top: 12px;
+                border-radius: 10px;
+                border: 2px solid {border};
+                background-color: {background};
+                color: {text_color};
+                font-size: 24px;
+                font-weight: 700;
+                text-align: center;
+                min-width: 180px;
+            ">
+                {label}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )        
     except httpx.TimeoutException:
         st.error(
             "L'API a mis trop de temps à répondre, même avec le nouveau timeout."
