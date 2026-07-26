@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - julien-streamlit-airflow-test
 
 jobs:
   run-tests:
@@ -18,6 +19,8 @@ jobs:
         run: docker compose build api
 
       - name: Run tests
+        env:
+          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: docker compose run --rm tests
 
       - name: Teardown containers
