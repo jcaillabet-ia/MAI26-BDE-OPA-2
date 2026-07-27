@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - julien-streamlit-airflow-test
 
 jobs:
   run-tests:
@@ -22,10 +21,6 @@ jobs:
         env:
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: docker compose run --rm tests
-
-      - name: Show API logs on failure
-        if: failure()
-        run: docker compose logs api
 
       - name: Teardown containers
         if: always()
