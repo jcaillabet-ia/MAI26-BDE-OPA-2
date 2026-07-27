@@ -10,11 +10,11 @@ from dependencies import get_cassandra
 
 router = APIRouter()
 
-@router.post("/postgres/empty")
+@router.post("/postgres/empty", status_code=status.HTTP_204_NO_CONTENT)
 def empty_postgres():
     db.run_postgres_script("empty_postgres.sql")
 
-@router.post("/cassandra/empty")
+@router.post("/cassandra/empty", status_code=status.HTTP_204_NO_CONTENT)
 def empty_cassandra(session: CassandraSession = Depends(get_cassandra)):
     db.run_cassandra_script("empty_cassandra.cql", session)
 

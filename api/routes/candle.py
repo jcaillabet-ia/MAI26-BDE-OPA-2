@@ -25,12 +25,13 @@ def list(id: str, session: Session = Depends(get_cassandra)):
     except cassandra.InvalidRequest:
         raise HTTPException(status_code=500, detail="La base de données Cassandra n'a pas été initialisée.")
 
-@router.post("/{id}/save")
+@router.post("/{id}/save", status_code=status.HTTP_204_NO_CONTENT)
 def save(id: str, payload: CandleInput, session: Session = Depends(get_cassandra)):
     """
     Sauvegarde les bougies pour une cryptomonnaie donnée
     """
-    return save_cassandra_candles(id, payload.candles, session)
+
+    save_cassandra_candles(id, payload.candles, session)
 
 @router.get("/{coin_id}/interval")
 def last_date(coin_id: str, session: Session = Depends(get_cassandra)):
