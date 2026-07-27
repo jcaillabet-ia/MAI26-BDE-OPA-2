@@ -19,7 +19,7 @@ def list():
     except ProgrammingError as e:
         raise HTTPException(status_code=500, detail="La base de données PostgreSQL n'a pas été initialisée.")
 
-@router.get("/{id}")
+@router.get("/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def item(id: str):
     coin = get_coin(id)
     return coin

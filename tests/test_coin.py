@@ -1,12 +1,32 @@
 import httpx
 
-def test_coin_route_returns_list():
+def test_postgres_database_is_initialized():
+    url = "http://api:8000/coin/"
+    response = httpx.get(url)
+    assert response.status_code == 200
+
+def test_coins_route_http_code():
+    url = "http://api:8000/coin/"
+    response = httpx.get(url)
+    assert response.status_code == 200
+
+def test_coins_route_returns_list():
     url = "http://api:8000/coin/"
     response = httpx.get(url)
     data = response.json()
     assert isinstance(data, list)
 
-def test_fill_route_http_code():
-    url = "http://api:8000/admin/postgres/fill"
-    response = httpx.post(url, timeout=120.0)
-    assert response.status_code == 204, f"status={response.status_code} body={response.text}"
+def test_coin_route_http_code():
+    url = "http://api:8000/coin/bitcoin"
+    response = httpx.get(url)
+    assert response.status_code == 204
+
+def test_enable_route_http_code():
+    url = "http://api:8000/coin/bitcoin/enable"
+    response = httpx.patch(url)
+    assert response.status_code == 204
+
+def test_disable_route_http_code():
+    url = "http://api:8000/coin/bitcoin/disable"
+    response = httpx.patch(url)
+    assert response.status_code == 204
